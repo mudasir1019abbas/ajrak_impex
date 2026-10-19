@@ -10,39 +10,39 @@ import containers from "../assests/images/shipping-containers.jpg";
 import handShake from "../assests/images/hand-shake.jpg";
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy-800">
-      <div className="mx-auto grid max-w-7xl gap-1 sm:gap-2 lg:grid-cols-12 lg:px-0">
-        {/* Left container image (desktop) */}
-        <ImageBox
-          src={containers}
-          alt="Stacked shipping containers"
-          label="Shipping containers"
-          className="hidden h-full min-h-[420px] w-full animate-fade-in lg:col-span-3 lg:block"
-        />
+   <section className="relative overflow-hidden">
+    <div className="grid max-w-7xl md:grid-cols-12">
+  {/* Centre message */}
+      <div className=" bg-navy-800 relative flex min-h-[420px] flex-col items-center justify-center px-6 py-5 text-center md:col-span-6 lg:min-h-[460px]">
+        <Emblem className="mb-6 h-24 w-24 animate-float sm:h-28 sm:w-28" />
+         <h1 className="animate-fade-up text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[2.6rem]">
+           Global Trade,
+         <br className="hidden sm:block" /> Distinguished by Heritage.
+        </h1>
+        <p className="mt-4 max-w-md animate-fade-up text-white/80 [animation-delay:200ms]">
+          Reliable Ajrak textiles &amp; general trade from Pakistan to the world.
+        </p>
 
-        {/* Centre message */}
-        <div className="relative flex min-h-[420px] flex-col items-center justify-center px-6 py-5 text-center lg:col-span-5 lg:min-h-[460px]">
-          <Emblem className="mb-6 h-24 w-24 animate-float sm:h-28 sm:w-28" />
-          <h1 className="animate-fade-up text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[2.6rem]">
-            Global Trade,
-            <br className="hidden sm:block" /> Distinguished by Heritage.
-          </h1>
-          <p className="mt-4 max-w-md animate-fade-up text-white/80 [animation-delay:200ms]">
-            Reliable Ajrak textiles &amp; general trade from Pakistan to the world.
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3 animate-fade-up [animation-delay:400ms]">
-            <Button to="/services" className="animate-pulse-ring">Explore Products</Button>
-            <Button to="/services" className="px-14 border-white text-white" variant="outline">Services</Button>
-          </div>
-        </div>
-
-        {/* Right stacked images */}
-        <div className="grid animate-slide-left gap-0.1 grid-rows-2  lg:col-span-4 lg:grid-cols-1">
-          <ImageBox src={homeAjrak} alt="Hands holding Ajrak cloth" label="Ajrak textile" className="h-44 w-full sm:h-56 lg:h-[228px]" />
-          <ImageBox src={handShake} alt="Business handshake" label="Trusted partnerships" className="h-44 w-full sm:h-56 lg:h-[228px]" />
-        </div>
+    <div className="mt-7 flex flex-wrap justify-center gap-3 animate-fade-up [animation-delay:400ms]">
+      <Button to="/services" className="animate-pulse-ring">Explore Products</Button>
+      <Button to="/services" className="px-14 border-white text-white" variant="outline">Services</Button>
+    </div>
       </div>
-    </section>
+  {/* Containers image: visible only on 768px and up */}
+      <ImageBox
+        src={containers}
+        alt="Stacked shipping containers"
+        label="Shipping containers"
+        className="hidden h-full min-h-[420px] w-full animate-fade-in md:col-span-6 md:block"
+      />
+
+  {/* Two images in a row: visible only below 768px */}
+      <div className="grid grid-cols-2 gap-1 animate-slide-left md:hidden">
+        <ImageBox src={homeAjrak} alt="Hands holding Ajrak cloth" label="Ajrak textile" className="h-44 w-full sm:h-56" />
+        <ImageBox src={handShake} alt="Business handshake" label="Trusted partnerships" className="h-44 w-full sm:h-56" />
+      </div>
+    </div>
+</section>
   );
 }
 
