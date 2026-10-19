@@ -57,43 +57,63 @@ const steps = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-navy-800 text-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 sm:px-6 md:grid-cols-2 md:py-20 lg:px-8">
-          <div className="animate-fade-up">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-white/70">Ajrak Impex International</p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
-              Global Trends.
-              <br />
-              Local Prices.
-              <span className="mt-2 block text-2xl text-white/85 sm:text-3xl">Your Trade Journey Starts Here.</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-7 text-white/80">
-              Ajrak Impex helps young professionals import, invest, and grow in global trade, with no experience required.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button to="/contact">Start Your Journey <Arrow className="h-4 w-4" /></Button>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-white/70 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-800"
-              >
-                Chat on WhatsApp
-              </a>
+      <section className="relative overflow-hidden text-white">
+        <div className="mx-auto grid max-w-7xl md:grid-cols-2">
+          {/* Text: same width as the image, padding lives here */}
+            <div className="bg-navy-800 animate-fade-up flex flex-col justify-center px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+              <p id="bussiness-goal" className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold uppercase tracking-[0.25em] text-white/70">
+                {['Ajrak', 'Impex', 'International'].map((word) => (
+                  <span key={word} className="inline-flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.10)]" aria-hidden="true" />
+                    <span>{word}</span>
+                  </span>
+                ))}
+              </p>
+              <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
+                  Global Trends. <br />Local Prices.
+                  <span className="mt-2 block text-2xl text-white/85 sm:text-3xl">Your Trade Journey Starts Here.</span>
+                </h1>
+              <p className="mt-5 max-w-xl text-lg leading-7 text-white/80">
+                   Ajrak Impex helps young professionals import, invest, and grow in global trade, with no experience required.
+              </p>
+      <div className="mt-7 flex flex-wrap gap-3">
+        <Button to="/contact">Start Your Journey <Arrow className="h-4 w-4" /></Button>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-md border border-white/70 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-800"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
             </div>
-          </div>
-          <Reveal direction="right">
-            <ImageBox src={homeAjrak} alt="Ajrak textile, reflecting the heritage behind the company name" className="h-72 w-full rounded-2xl shadow-xl sm:h-96" />
-          </Reveal>
-        </div>
+
+          {/* Image: same width, fills the full height of the section */}
+            <div className="relative min-h-72 sm:min-h-96 md:min-h-full">
+              <ImageBox
+                 src={containers}
+                 alt="Shipping containers"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+           </div>
+       </div>
+
       </section>
 
       <section className="bg-maroon-700 text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-8 gap-y-3 px-4 py-4 text-center text-sm font-semibold sm:px-6 lg:px-8">
-          <span>Registered Company</span>
-          <span>Offices in Karachi &amp; Khairpur</span>
-          <span>Beginner-Friendly</span>
-          <span>Quality-Checked Products</span>
+        <div className="mx-auto flex max-w-7xl flex-wrap justify-evenly gap-x-6 gap-y-3 px-4 py-4 text-center text-sm font-semibold sm:px-6 lg:px-8">
+          {[
+            "Registered Company",
+            "Offices in Karachi & Khairpur",
+            "Beginner-Friendly",
+            "Quality-Checked Products",
+          ].map((item) => (
+            <span key={item} className="inline-flex items-center gap-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.12)]" aria-hidden="true" />
+              <span>{item}</span>
+            </span>
+          ))}
         </div>
       </section>
 
