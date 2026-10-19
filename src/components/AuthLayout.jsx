@@ -9,8 +9,8 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
         <ImageBox src="/images/containers.jpg" alt="Shipping containers" className="absolute inset-0 h-full w-full opacity-25" label="" />
         <div className="relative z-10 max-w-sm animate-fade-up px-8 text-center text-white">
           <Emblem className="mx-auto h-24 w-24 animate-float" />
-          <h2 className="mt-6 text-3xl font-extrabold">Global Trade, Rooted in Tradition.</h2>
-          <p className="mt-3 text-white/75">Manage inquiries, track your orders and trade with a partner you can rely on.</p>
+          <h2 className="mt-6 text-3xl font-extrabold">Your Trade Journey Starts Here.</h2>
+          <p className="mt-3 text-white/75">Start learning about global trade with a team ready to guide you through the next step.</p>
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import Reveal from "../components/Reveal.jsx";
 import { PageHero } from "../components/UI.jsx";
 import { posts } from "../data/content.js";
 import { Arrow } from "../components/Icons.jsx";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
   const tags = ["All", ...new Set(posts.map((p) => p.tag))];
@@ -38,9 +39,12 @@ export default function Blog() {
                   </div>
                   <h2 className="mt-4 text-lg font-bold text-navy-800 transition-colors group-hover:text-maroon-700">{p.title}</h2>
                   <p className="mt-2 flex-1 text-sm text-slate-600">{p.text}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-maroon-700 transition-all duration-300 group-hover:gap-3">
+                  <Link
+                    to={`/blog/${p.slug}`}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-maroon-700 transition-all duration-300 group-hover:gap-3"
+                  >
                     Read more <Arrow className="h-4 w-4" />
-                  </span>
+                  </Link>
                 </article>
               </Reveal>
             ))}

@@ -1,105 +1,162 @@
-# Ajrak Impex International Website
+Home Page
+________________________________________
+Browser title and description (for Google)
+Ajrak Impex International | Import, Invest & Grow with Global Trade
+A Karachi-based import-export company helping young professionals start, invest, and grow in global trade. No experience needed.
+________________________________________
+1. Hero section
+Global Trends. Local Prices.
+Your Trade Journey Starts Here.
+Ajrak Impex helps young professionals import, invest, and grow in global trade, with no experience required.
+[Start Your Journey] [Chat on WhatsApp]
+________________________________________
+2. Trust strip
+Registered Company · Offices in Karachi & Khairpur · Beginner-Friendly · Quality-Checked Products
+________________________________________
+3. What we bring you
+Trendy products you won't find locally
+Fashion, accessories, gadgets, sports gear, snacks, and more, sourced globally and priced for everyone.
+(Use five small cards with a photo each: Fashion · Accessories · Gadgets · Sports Gear · Snacks.)
+________________________________________
 
-## Project Overview
 
-This document is a shared reference for the website scope, current implementation, required client inputs, and delivery tracking. Status reflects what is present in the current frontend codebase; it does not represent client approval, production deployment, or backend completion.
+4. Choose your path
+Three Ways to Grow With Us
+1. Trade With Us
+Want to start importing? We guide you through sourcing, logistics, and customs clearance, so you can launch with confidence.
+[Learn More]
+2. Back a Product
+Choose from our existing products and share in the profit based on performance. Start with a budget that suits you.
+[Learn More]
+3. Grow With Us
+Become an investor or shareholder and help build a youth-focused trade platform from the ground up.
+[Learn More]
+Investment involves risk. Returns depend on product and market performance and are not guaranteed.
+________________________________________
+5. Why Ajrak Impex
+Built for Beginners. Backed by Process.
+•	Affordable: Global trends at fair prices
+•	Quality-checked: Products reviewed before they reach you
+•	Beginner-friendly: Step-by-step guidance, no jargon
+•	Transparent: Clear terms, clear communication
+________________________________________
+6. How it works
+Simple From Start to Finish
+1. Talk to us: Tell us your goal and budget.
+2. Choose your model: Import, invest, or partner.
+3. We get moving: Sourcing, shipping, and clearance handled with you.
+4. You grow: Sell, earn, and expand.
+________________________________________
+7. Who it's for
+Made for Young, Ambitious Minds
+Fresh graduates, early-career professionals, and first-time entrepreneurs. If you're curious about trade and ready to learn, you belong here.
+________________________________________
+8. Our story (short)
+Rooted in Sindh. Built for the World.
+Our name comes from Ajrak, a symbol of Sindh's craftsmanship and pride. Like it, we connect tradition with the modern world, and open global trade to a new generation.
+[Read Our Story]
+________________________________________
+9. Closing call to action
+Ready to Begin?
+Your first step into global trade is a single message away.
+[Message Us on WhatsApp] [Send an Email]
+________________________________________
+Footer
+Ajrak Impex International (SMC-Private) Limited
+Reg. No. K399826 · PP/REG/INC No. 0360593
+Head Office: A-1517, Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi
+Branch Office: Abid Colony, Mirwah Road, Khairpur
++92-300-5310821 · ajrakimpex@gmail.com
+© 2026 Ajrak Impex International. All rights reserved.
+________________________________________
 
-**Project:** Ajrak Impex International website  
-**Platform:** Responsive React website  
-**Last reviewed:** 18 October 2026
+ About Us
+Ajrak Impex International (SMC-Private) Limited
+We believe great products shouldn't be a privilege. At Ajrak Impex, we bring the world's freshest trends — fashion, accessories, gadgets, sports gear, snacks and more — to Pakistan at prices that make sense.
+We started with a simple idea: young, driven people deserve a real way into global trade, even with zero experience. So we built a company that does the heavy lifting with you, not just for you.
+Three ways to grow with us
+•	Import with support. We guide you through sourcing, logistics and customs clearance, so you can launch without the guesswork.
+•	Invest in a product. Back an existing product line and share in the profit.
+•	Become a shareholder. Own a piece of the company and grow alongside it.
+What we stand for
+Affordable. Trendy. Quality you can trust. Styles you won't find in local markets, made accessible to everyone.
+Whether you're a first-time entrepreneur or simply curious about where your next big opportunity lies, Ajrak Impex is where your journey begins.
 
-## Project Purpose
+Our Mission
+To open the doors of global trade to young professionals by making sourcing, importing, and investing simple, affordable, and transparent, so that anyone with drive can begin, whatever their experience.
+Our Vision
+To become Pakistan's most trusted launchpad for young traders and investors, connecting local ambition with global opportunity.
+Short versions (for banners or cards)
+•	Mission: Making global trade simple, affordable, and open to every young professional.
+•	Vision: A Pakistan where young talent trades confidently with the world.
+Optional: Our Values (four words, one line each)
+•	Accessible: Trade should not require years of experience.
+•	Trustworthy: Clear terms and honest communication, always.
+•	Quality: Products we are proud to stand behind.
+•	Growth: When our partners grow, we grow.
 
-Present Ajrak Impex International as a Pakistan-based global trade and export business. The site introduces the company and its heritage, showcases products and logistics services, explains international trade coverage, shares educational content, and provides ways for prospective buyers to get in touch.
+Products
 
-## Website Scope
+Terms and Conditions
+Last updated: October 2026
+1. About us
+This website is operated by Ajrak Impex International (SMC-Private) Limited ("Ajrak Impex", "we", "us"), registered in Pakistan, with its head office in Karachi.
+2. Our services
+We offer three models: (a) import support, including sourcing, logistics, and customs clearance; (b) product-based investment with profit sharing; and (c) investor or shareholder participation. Details of each are set out in a written agreement signed before any engagement begins.
+3. Eligibility
+You must be at least 18 years old and legally able to enter a contract.
+4. Orders and payments
+Prices and availability may change without notice. An order or engagement is confirmed only when we confirm it in writing (including by email or WhatsApp). Payment terms are stated in your quotation or agreement.
+5. Shipping and customs
+Delivery times are estimates. Delays caused by carriers, customs, or regulatory requirements are outside our control. Duties, taxes, and clearance charges are borne as stated in your agreement.
+6. Returns and refunds
+Please report damaged or incorrect goods within 7 days of delivery, with photos. Eligible items will be repaired, replaced, or refunded at our discretion, subject to the agreement.
+7. Investment arrangements
+Nothing on this website is a public offer of securities or a guarantee of returns. Any investment or shareholding is subject to a separate written agreement and applicable law.
+8. Intellectual property
+All content, logos, and designs on this site belong to Ajrak Impex and may not be copied without written permission.
+9. Limitation of liability
+To the extent permitted by law, we are not liable for indirect or consequential losses, or for delays and losses caused by events beyond our reasonable control.
+10. Governing law
+These terms are governed by the laws of Pakistan. Disputes fall under the jurisdiction of the courts of Karachi.
+11. Changes
+We may update these terms at any time. Continued use of the site means you accept the updated version.
+________________________________________
+Privacy Policy
+What we collect
+Your name, phone number, email, city, and any details you share when you contact us, order, or enquire about investing. We may also collect basic website data such as device type and pages visited.
+How we use it
+To respond to enquiries, process orders, arrange shipping and clearance, prepare agreements, improve our website, and, only if you agree, send updates and offers.
+Who we share it with
+Only with those needed to serve you, such as couriers, clearing agents, payment providers, and professional advisers. We do not sell your personal data.
+Security and retention
+We take reasonable steps to protect your information and keep it only as long as needed for business, legal, or tax purposes.
+Your choices
+You may ask us to access, correct, or delete your information, or to stop marketing messages, by contacting us at ajrakimpex@gmail.com.
+Cookies
+Our website may use cookies to work properly and understand usage. You can disable them in your browser settings.
+________________________________________
+Risk Disclaimer
+Importing, trading, and investing involve risk. Product performance depends on market demand, pricing, currency movements, shipping conditions, and regulatory changes. Profit is not guaranteed, and you may lose part or all of the amount you invest.
+Information on this website is for general guidance only and is not financial, legal, or tax advice. Please seek independent professional advice and read your written agreement carefully before committing funds. Past performance is not an indicator of future results.
+________________________________________
+Before publishing: for Models 2 and 3, confirm how the profit-sharing and shareholder structures fit within SECP requirements and your company's constitutional documents. A clear written agreement for each investor is essential. Also place the Risk Disclaimer link in the footer and next to every investment button.
 
-| Page / route | Purpose and current features | Status |
-|---|---|---|
-| Home `/` | Company promise, logistics and supply-chain preview, featured catalog, case studies, and contact call to action | Implemented in frontend |
-| About Us `/about` | Company story, history timeline, values, and certifications | Implemented in frontend |
-| Services `/services` | Logistics services, supply-chain steps, product catalog, case studies, and quote call to action | Implemented in frontend |
-| Global Trade `/global-trade` | Regions and trade lanes served, plus buyer benefits | Implemented in frontend |
-| Blog `/blog` | Static article summaries with category filters | Implemented in frontend; article detail pages are not included |
-| Contact `/contact` | Contact details, location map, validated inquiry form | Frontend implemented; form delivery requires backend API |
-| Log in `/login` | Validated login form and account redirect | Frontend implemented; authentication requires backend API |
-| Sign up `/signup` | Registration form, password checks, and terms agreement checkbox | Frontend implemented; registration requires backend API |
-| Account `/account` | Protected example page showing the signed-in user's name/email and log-out action | Example only; order or inquiry tracking is not included |
-| Not found | Fallback for unknown routes | Implemented in frontend |
+Download
+Success Story
+MOU
+Pictures
 
-The navigation also links to case studies, product catalog, and certifications sections within the Services and About pages.
+Contact Us:
+Ajrak Impex International (SMC-Private) Limited
+Head Office: A-1517, Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi
+Branch Office: Abid Colony, Mirwah Road, Khairpur
++92-300-5310821 
+Email:  ajrakimpex@gmail.com
 
-## Current Project Status
+Career
 
-| Workstream | Status | Notes / next action |
-|---|---|---|
-| React/Vite website foundation and page routing | Implemented in frontend | Built with React 18, Vite, React Router 6, and Tailwind CSS 4 |
-| Responsive layouts and shared visual components | Implemented in frontend | Uses shared navigation, footer, form, image, and reveal components |
-| Company, service, product, and blog copy | Needs client review | Confirm factual accuracy, wording, and final approved content |
-| Images and case-study material | Needs client review | Confirm image rights and replace any sample or missing images |
-| Contact form delivery | Backend required | Connect `POST /api/contact` and confirm recipient/notification workflow |
-| Registration, login, and session validation | Backend required | Implement the documented authentication API endpoints |
-| Account features | Scope decision required | Current page is a profile example; define whether customers need order, shipment, or inquiry tracking |
-| Production deployment and domain | Not documented in this repository | Confirm hosting, domain/DNS, SSL, and release owner |
-| End-to-end acceptance and launch | Pending | Test approved content, devices, form delivery, authentication, and deployment |
-
-## Client Inputs and Approvals
-
-Please confirm or provide the following before launch:
-
-- Business name, company description, history dates, and any claims about export experience.
-- Product list, descriptions, specifications, and final product photography.
-- Service descriptions, destinations served, and approved trade-lane percentages or other statistics.
-- Case-study facts and permission to publish client, shipment, and outcome details.
-- Certification names, current validity, and supporting evidence for publication.
-- Official office address, phone numbers, email addresses, map location, and business hours.
-- Approved privacy policy and terms of service for the account forms.
-- Whether the site should support customer accounts, shipment/order tracking, or only lead generation.
-- Backend/API owner, hosting provider, domain access, and production launch contact.
-
-## Integrations and Technical Notes
-
-- Frontend: React 18, Vite 5, React Router 6, and Tailwind CSS 4.
-- Development: `npm install`, then `npm run dev` (Vite's default local URL is `http://localhost:5173`).
-- Production bundle: `npm run build`; output is generated in `dist/`.
-- API configuration: set `VITE_API_URL` for the backend base URL, or use the Vite development proxy configured in `vite.config.js`.
-- Expected API endpoints are documented in `src/services/authService.js`: register, login, current-user lookup, and contact submission.
-- The frontend currently stores the authentication token in browser `localStorage`. Before production, the backend and security approach should be reviewed; the README notes an httpOnly-cookie approach as a production consideration.
-- Some images use files under `src/assests/images/`; other page sections refer to image files under `/images/`. Confirm all assets resolve in the production build and replace placeholders before launch.
-
-## Delivery Tracker
-
-Update the status and owner columns during project reviews. Suggested statuses: **Not started**, **In progress**, **Needs client input**, **Ready for review**, and **Complete**.
-
-| Milestone | Suggested owner | Status | Target / notes |
-|---|---|---|---|
-| Confirm website scope and account requirements | Client + project team | Needs client input | Confirm whether account-based shipment tracking is required |
-| Approve business content, statistics, and legal text | Client | Needs client input | See Client Inputs and Approvals |
-| Supply and approve final image assets | Client + project team | Needs client input | Include publication rights/consent where applicable |
-| Complete backend and connect forms/authentication | Development team | Not started | Required only for the interactive API-backed features |
-| Review responsive website and content | Client + project team | Not started | Review desktop and mobile layouts and all routes |
-| Run acceptance checks and resolve launch issues | Development team | Not started | Include contact delivery and account flows if backend is in scope |
-| Deploy to approved domain and confirm launch | Project team | Not started | Hosting and domain details to be confirmed |
-
-## Acceptance Checklist
-
-- [ ] Client approves page content, product catalog, case studies, and published business claims.
-- [ ] Final images are supplied, approved for use, and display without placeholders.
-- [ ] Address, telephone numbers, email addresses, map marker, and business hours are confirmed.
-- [ ] Contact inquiry reaches the agreed business inbox or CRM and success/error states are verified.
-- [ ] If accounts are in scope, registration, login, session restoration, and logout work against the production API.
-- [ ] Client confirms the intended account experience, including whether shipment/order tracking is required.
-- [ ] Terms and privacy links lead to approved legal content.
-- [ ] Main routes and navigation are checked on desktop and mobile.
-- [ ] Production domain, HTTPS, and deployment are confirmed.
-
-## Project Contacts and Review Notes
-
-| Item | Details |
-|---|---|
-| Client decision-maker | To be confirmed |
-| Project contact | To be confirmed |
-| Backend/API owner | To be confirmed |
-| Hosting/deployment owner | To be confirmed |
-| Next review date | To be confirmed |
-| Decisions / notes | Add dated decisions and action owners here |
+Social Media
+Facebook: https://www.facebook.com/Ajrakimpex
+Whatsapp: +923005310821
+Instagram, Tiktok, 

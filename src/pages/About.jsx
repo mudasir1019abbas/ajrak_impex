@@ -1,87 +1,107 @@
-import ImageBox from "../components/ImageBox.jsx";
 import Reveal from "../components/Reveal.jsx";
-import { PageHero, SectionTitle } from "../components/UI.jsx";
-import { timeline, values, certifications } from "../data/content.js";
-import { FileCheck } from "../components/Icons.jsx";
-import owner from "../assests/images/history/owner.jpg";
+import { Button, PageHero, SectionTitle } from "../components/UI.jsx";
+import { Arrow, Award, Globe, ShieldCheck, Truck } from "../components/Icons.jsx";
+import { Link } from "react-router-dom";
+
+const values = [
+  { icon: Globe, title: "Accessible", text: "Trade should not require years of experience." },
+  { icon: ShieldCheck, title: "Trustworthy", text: "Clear terms and honest communication, always." },
+  { icon: Award, title: "Quality", text: "Products we are proud to stand behind." },
+  { icon: Truck, title: "Growth", text: "When our partners grow, we grow." },
+];
+
 export default function About() {
   return (
     <>
-      <PageHero title="About Ajrak Impex" text="Seven decades of trading, built on trust, craft and family." />
+      <PageHero
+        title="About Ajrak Impex International"
+        text="A Karachi-based import-export company opening global trade to a new generation."
+      />
 
-      {/* Timeline: horizontal on lg, vertical on smaller screens */}
       <section className="bg-white py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Our journey" title="Our History" />
-          <ol className="relative grid gap-8 border-l-2 border-maroon-700/30 pl-6 lg:grid-cols-5 lg:gap-4 lg:border-l-0 lg:border-t-2 lg:pl-0 lg:pt-8">
-            {timeline.map((t, i) => (
-              <Reveal as="li" key={t.year} delay={i * 120} className="relative">
-                <span className="absolute -left-[33px] top-1 h-4 w-4 rounded-full border-2 border-white bg-maroon-700 ring-2 ring-maroon-700/40 lg:-top-[41px] lg:left-1/2 lg:-translate-x-1/2" />
-                <div className="group text-left lg:text-center">
-                  <div className="overflow-hidden rounded-lg">
-                    <ImageBox src={t.img} alt={t.title} className="h-28 w-full grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-                  </div>
-                  <p className="mt-3 text-sm font-bold text-maroon-700">{t.year}</p>
-                  <h3 className="text-sm font-bold text-navy-800">{t.title}</h3>
-                  <p className="mt-1 text-xs text-slate-600">{t.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="text-lg leading-8 text-slate-700">
+              We believe great products shouldn't be a privilege. At Ajrak Impex, we bring the world's freshest trends—fashion,
+              accessories, gadgets, sports gear, snacks and more—to Pakistan at prices that make sense.
+            </p>
+            <p className="mt-5 leading-7 text-slate-600">
+              We started with a simple idea: young, driven people deserve a real way into global trade, even with zero experience.
+              So we built a company that does the heavy lifting with you, not just for you.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* Our story + values/certifications */}
       <section className="ajrak-pattern py-14">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
-          <Reveal direction="left" className="lg:col-span-2">
-            <div className="grid gap-6 sm:grid-cols-5">
-              <div className="sm:col-span-2">
-                <div className="ajrak-pattern-dark rounded-lg p-2">
-                  <ImageBox src={owner} alt="Our founders" className="aspect-[4/5] w-full rounded" />
-                </div>
-              </div>
-              <div className="sm:col-span-3">
-                <h2 className="text-2xl font-extrabold text-navy-800">Our Story</h2>
-                <span className="mt-2 block h-1 w-14 rounded bg-maroon-700" />
-                <p className="mt-4 text-slate-600">
-                  Ajrak Impex International began as a modest family shop selling hand-block-printed cloth in Karachi. Over generations
-                  we grew into a trusted trading house, carrying Sindh&apos;s Ajrak heritage and Pakistan&apos;s finest agricultural goods to buyers around the world.
-                </p>
-                <p className="mt-3 text-slate-600">
-                  Today the second generation leads the company, combining deep respect for artisans with modern logistics,
-                  clear documentation and honest relationships. Every shipment carries our name and our family&apos;s promise.
-                </p>
-              </div>
-            </div>
-          </Reveal>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle title="Three Ways to Grow With Us" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Import with support",
+                text: "We guide you through sourcing, logistics and customs clearance, so you can launch without the guesswork.",
+              },
+              {
+                title: "Invest in a product",
+                text: "Explore backing an existing product line and sharing in its profit based on performance.",
+              },
+              {
+                title: "Become a shareholder",
+                text: "Discuss becoming a shareholder and growing alongside the company under a separate written agreement.",
+              },
+            ].map((model, index) => (
+              <Reveal key={model.title} delay={index * 100}>
+                <article className="h-full rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+                  <h3 className="text-lg font-bold text-navy-800">{model.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{model.text}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-slate-600">
+            Investment involves risk. Returns are not guaranteed and any investment or shareholding is subject to a separate written agreement.
+            {" "}<Link to="/legal#risk" className="font-semibold text-maroon-700 underline">Read the risk disclaimer</Link>.
+          </p>
+        </div>
+      </section>
 
-          <Reveal direction="right" className="space-y-8" >
-            <div id="values">
-              <h3 className="text-lg font-extrabold text-navy-800">Our Values</h3>
-              <ul className="mt-3 space-y-3">
-                {values.map(({ icon: Icon, title, text }) => (
-                  <li key={title} className="flex gap-3 rounded-lg bg-white p-3 shadow-sm ring-1 ring-slate-100 transition duration-300 hover:translate-x-1 hover:shadow-md">
-                    <Icon className="h-7 w-7 shrink-0 text-maroon-700" />
-                    <div>
-                      <p className="text-sm font-bold text-navy-800">{title}</p>
-                      <p className="text-xs text-slate-600">{text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-extrabold text-navy-800">Certifications</h3>
-              <ul className="mt-3 space-y-2">
-                {certifications.map((c) => (
-                  <li key={c} className="flex items-center gap-2 text-sm text-slate-700">
-                    <FileCheck className="h-5 w-5 text-maroon-700" /> {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <section className="bg-white py-14">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
+          <Reveal>
+            <h2 className="text-2xl font-extrabold text-navy-800">Our Mission</h2>
+            <p className="mt-3 leading-7 text-slate-600">
+              To open the doors of global trade to young professionals by making sourcing, importing, and investing simple,
+              affordable, and transparent, so that anyone with drive can begin, whatever their experience.
+            </p>
           </Reveal>
+          <Reveal>
+            <h2 className="text-2xl font-extrabold text-navy-800">Our Vision</h2>
+            <p className="mt-3 leading-7 text-slate-600">
+              To become Pakistan's most trusted launchpad for young traders and investors, connecting local ambition with global opportunity.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="ajrak-pattern py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle title="What We Stand For" subtitle="Affordable. Trendy. Quality you can trust. Styles you won't find in local markets, made accessible to everyone." />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map(({ icon: Icon, title, text }, index) => (
+              <Reveal key={title} delay={index * 80}>
+                <div className="h-full rounded-xl bg-white p-5 text-center shadow-sm ring-1 ring-slate-100">
+                  <Icon className="mx-auto h-9 w-9 text-maroon-700" />
+                  <h3 className="mt-3 font-bold text-navy-800">{title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <p className="mb-4 text-slate-600">Whether you're a first-time entrepreneur or simply curious about your next opportunity, your journey can begin here.</p>
+            <Button to="/contact">Talk to Our Team <Arrow className="h-4 w-4" /></Button>
+          </div>
         </div>
       </section>
     </>

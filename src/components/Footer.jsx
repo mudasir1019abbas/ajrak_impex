@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
-import { Facebook, Instagram, Twitter, Linkedin } from "./Icons.jsx";
-
-const social = [
-  { label: "Facebook", icon: Facebook, href: "#" },
-  { label: "Instagram", icon: Instagram, href: "#" },
-  { label: "X (Twitter)", icon: Twitter, href: "#" },
-  { label: "LinkedIn", icon: Linkedin, href: "#" },
-];
+import { Facebook, WhatsApp, Linkedin, Twitter, Mail } from "./Icons.jsx";
 
 const sitemap = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
-  { label: "Services", to: "/services" },
-  { label: "Global Trade", to: "/global-trade" },
+  { label: "Products", to: "/products" },
   { label: "Blog", to: "/blog" },
   { label: "Contact Us", to: "/contact" },
+];
+
+const socialLinks = [
+  { label: "Email", icon: Mail, href: "mailto:ajrakimpex@gmail.com" },
+  { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/Ajrakimpex" },
+  { label: "WhatsApp", icon: WhatsApp, href: "https://wa.me/923005310821" },
+  { label: "Linkedin", icon: Linkedin, href:"" },
+  { label: "Twitter", icon: Twitter,   href:""},
 ];
 
 export default function Footer() {
@@ -24,43 +24,60 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <Logo light />
-          <p className="mt-4 max-w-xs text-sm text-white/70">
-            Import, export and cultural textiles from Pakistan to the world. Global trade, rooted in tradition.
+          <p className="mt-4 text-sm font-semibold text-white/90">Ajrak Impex International (SMC-Private) Limited</p>
+          <p className="mt-1 text-xs text-white/65">Reg. No. K399826 · PP/REG/INC No. 0360593</p>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">
+            Helping young professionals import, invest, and grow in global trade.
           </p>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-white/90">Follow us</h3>
           <div className="mt-4 flex gap-3">
-            {social.map(({ label, icon: Icon, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-navy-800"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
+            {socialLinks.map(({ label, icon: Icon, href }) => {
+              const className = "flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition hover:bg-white hover:text-navy-800";
+              return href ? (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={`Ajrak Impex on ${label}`}
+                  className={className}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ) : (
+                <span
+                  key={label}
+                  role="img"
+                  aria-label={`${label} link not provided`}
+                  title={label}
+                  className={className}
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+              );
+            })}
           </div>
         </div>
 
+        <div className="text-sm text-white/75">
+          <h3 className="font-bold uppercase tracking-widest text-white/90">Contact</h3>
+          <p className="mt-4"><strong className="text-white">Head Office:</strong> A-1517, Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi</p>
+          <p className="mt-3"><strong className="text-white">Branch Office:</strong> Abid Colony, Mirwah Road, Khairpur</p>
+          <a href="tel:+923005310821" className="mt-3 block hover:text-white">+92-300-5310821</a>
+          <a href="mailto:ajrakimpex@gmail.com" className="mt-1 block hover:text-white">ajrakimpex@gmail.com</a>
+        </div>
+
         <div>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-white/90">Sitemap</h3>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-white/90">Explore</h3>
           <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-white/75">
-            {sitemap.map((s) => (
-              <li key={s.label}>
-                <Link to={s.to} className="transition-colors duration-200 hover:text-white hover:underline">
-                  {s.label}
-                </Link>
+            {sitemap.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className="transition-colors hover:text-white hover:underline">{item.label}</Link>
               </li>
             ))}
-            <li>
-              <Link to="/login" className="transition-colors hover:text-white hover:underline">Log in</Link>
-            </li>
-            <li>
-              <Link to="/signup" className="transition-colors hover:text-white hover:underline">Sign up</Link>
-            </li>
+            <li><Link to="/legal#terms" className="transition-colors hover:text-white hover:underline">Terms</Link></li>
+            <li><Link to="/legal#privacy" className="transition-colors hover:text-white hover:underline">Privacy</Link></li>
+            <li><Link to="/legal#risk" className="transition-colors hover:text-white hover:underline">Risk Disclaimer</Link></li>
+            <li><Link to="/contact" className="transition-colors hover:text-white hover:underline">Careers</Link></li>
           </ul>
         </div>
       </div>
@@ -68,7 +85,7 @@ export default function Footer() {
       <div className="bg-maroon-700">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-3 text-xs text-white/85 sm:flex-row sm:px-6 lg:px-8">
           <p>&copy; {new Date().getFullYear()} Ajrak Impex International. All rights reserved.</p>
-          <p>Import &bull; Export &bull; Pakistan</p>
+          <p>Import &bull; Invest &bull; Grow</p>
         </div>
       </div>
     </footer>

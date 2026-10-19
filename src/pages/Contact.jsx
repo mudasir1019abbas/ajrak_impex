@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Reveal from "../components/Reveal.jsx";
-import ImageBox from "../components/ImageBox.jsx";
 import { Button, Field, PageHero } from "../components/UI.jsx";
 import { Emblem } from "../components/Logo.jsx";
 import { MapPin, Phone, Mail } from "../components/Icons.jsx";
@@ -44,7 +43,7 @@ export default function Contact() {
 
   return (
     <>
-      <PageHero title="Contact Us" text="Tell us about your shipment or product needs - we're happy to help." />
+      <PageHero title="Contact Us" text="Tell us your goal, product interest, or budget. Our team will help you understand the next step." />
       <section className="ajrak-pattern py-12">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <Reveal direction="left">
@@ -84,28 +83,29 @@ export default function Contact() {
           </Reveal>
 
           <Reveal direction="right" className="space-y-6">
-            <div className="overflow-hidden rounded-xl shadow-lg ring-1 ring-slate-100">
-              <iframe
-                title="Office location in Karachi"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=66.9%2C24.78%2C67.2%2C24.95&layer=mapnik&marker=24.8607%2C67.0011"
-                className="h-64 w-full sm:h-80"
-                loading="lazy"
-              />
-            </div>
-            <div className="grid gap-5 rounded-xl bg-white p-5 shadow-lg ring-1 ring-slate-100 sm:grid-cols-2">
-              <ImageBox src="/images/office.jpg" alt="Our office" label="Our office" className="h-40 w-full rounded-lg sm:h-full" />
-              <div>
-                <h3 className="font-extrabold text-navy-800">Contact Info</h3>
-                <ul className="mt-3 space-y-3 text-sm text-slate-700">
-                  <li className="flex gap-2"><MapPin className="h-5 w-5 shrink-0 text-maroon-700" />{contactInfo.address}</li>
-                  {contactInfo.phones.map((p) => (
-                    <li key={p} className="flex gap-2"><Phone className="h-5 w-5 shrink-0 text-maroon-700" /><a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-maroon-700">{p}</a></li>
-                  ))}
-                  {contactInfo.emails.map((m) => (
-                    <li key={m} className="flex gap-2"><Mail className="h-5 w-5 shrink-0 text-maroon-700" /><a href={`mailto:${m}`} className="break-all hover:text-maroon-700">{m}</a></li>
-                  ))}
-                </ul>
+            <div className="rounded-xl bg-white p-6 shadow-lg ring-1 ring-slate-100 sm:p-8">
+              <h2 className="text-xl font-extrabold text-navy-800">{contactInfo.company}</h2>
+              <p className="mt-2 text-sm text-slate-500">{contactInfo.registration}</p>
+              <h3 className="mt-6 font-bold text-navy-800">Our Offices</h3>
+              <ul className="mt-3 space-y-4 text-sm text-slate-700">
+                <li className="flex gap-3"><MapPin className="h-5 w-5 shrink-0 text-maroon-700" /><span><strong>Head Office:</strong> {contactInfo.headOffice}</span></li>
+                <li className="flex gap-3"><MapPin className="h-5 w-5 shrink-0 text-maroon-700" /><span><strong>Branch Office:</strong> {contactInfo.branchOffice}</span></li>
+                {contactInfo.phones.map((phone) => (
+                  <li key={phone} className="flex gap-3"><Phone className="h-5 w-5 shrink-0 text-maroon-700" /><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="hover:text-maroon-700">{phone}</a></li>
+                ))}
+                {contactInfo.emails.map((email) => (
+                  <li key={email} className="flex gap-3"><Mail className="h-5 w-5 shrink-0 text-maroon-700" /><a href={`mailto:${email}`} className="break-all hover:text-maroon-700">{email}</a></li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="https://wa.me/923005310821" target="_blank" rel="noreferrer" className="rounded-md bg-maroon-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-maroon-800">Chat on WhatsApp</a>
+                <a href="https://www.facebook.com/Ajrakimpex" target="_blank" rel="noreferrer" className="rounded-md border border-maroon-700 px-4 py-2 text-sm font-semibold text-maroon-700 transition hover:bg-maroon-50">Facebook</a>
               </div>
+            </div>
+            <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+              <h3 className="font-bold text-navy-800">Careers</h3>
+              <p className="mt-2 text-sm text-slate-600">Interested in working with us? Send your introduction and CV by email.</p>
+              <a href="mailto:ajrakimpex@gmail.com?subject=Career%20enquiry" className="mt-3 inline-block text-sm font-semibold text-maroon-700 underline">Email us about careers</a>
             </div>
           </Reveal>
         </div>
