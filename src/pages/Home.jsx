@@ -59,7 +59,8 @@ export default function Home() {
         <div className="mx-auto grid min-[769px]:grid-cols-2">
           {/* Text: same width as the image, padding lives here */}
             <div
-              className="lg:bg-navy-700 containers-background animate-fade-up flex flex-col justify-center px-4 py-14 sm:px-6 md:py-20 lg:px-8"
+              id='bg-issue'
+              className="bg-navy-700 containers-background animate-fade-up flex flex-col justify-center px-4 py-14 sm:px-6 md:py-20 lg:px-8"
               style={{ "--hero-image": `url("${shippingContainers}")` }}
             >
               <p id="bussiness-goal" className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold uppercase tracking-[0.25em] text-white/70">
