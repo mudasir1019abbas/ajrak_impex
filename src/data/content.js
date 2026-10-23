@@ -2,11 +2,12 @@ export const nav = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Products", to: "/products" },
-  { label: "Blog", to: "/blog" },
+  { label: "News", to: "/news" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 
-export const posts = [
+export const newsArticles = [
   {
     slug: "the-story-behind-authentic-ajrak",
     title: "The Story Behind Authentic Ajrak",

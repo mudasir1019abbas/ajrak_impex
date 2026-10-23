@@ -18,6 +18,21 @@ export default function About() {
         text="A Karachi-based import-export company opening global trade to a new generation."
       />
 
+      <section id="strip" className="bg-maroon-700 text-white">
+        <div className="mx-auto flex max-w-7xl flex-wrap justify-evenly gap-x-6 gap-y-3 px-4 py-4 text-center text-sm font-semibold sm:px-6 lg:px-8">
+          {[
+            "Registered Company",
+            "Offices in Karachi & Khairpur",
+            "Beginner-Friendly",
+            "Quality-Checked Products",
+          ].map((item) => (
+            <span key={item} className="inline-flex items-center gap-3">
+              <span>{item}</span>
+            </span>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-white py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Reveal>

@@ -3,21 +3,16 @@ import ImageBox from "../components/ImageBox.jsx";
 import Reveal from "../components/Reveal.jsx";
 import { Button, SectionTitle } from "../components/UI.jsx";
 import { Arrow, Award, Globe, ShieldCheck, Truck } from "../components/Icons.jsx";
-import stoles from "../assests/images/stoles.jpg";
-import ajrak from "../assests/images/ajrak-image2.jpg";
-import containers from "../assests/images/shipping-containers.jpg";
-import cotton from "../assests/images/coton-bales.jpg";
-import snacks from "../assests/images/dried.webp";
-import homeAjrak from "../assests/images/home-ajrak.jpg";
+import { ajrakDetail, cottonBales, driedGoods, shippingContainers, stoles } from "../data/images/index.js";
 
 const whatsappUrl = "https://wa.me/923005310821?text=Hello%20Ajrak%20Impex%2C%20I%27d%20like%20to%20start%20my%20trade%20journey.";
 
 const productCategories = [
   { name: "Fashion", image: stoles },
-  { name: "Accessories", image: ajrak },
-  { name: "Gadgets", image: containers },
-  { name: "Sports Gear", image: cotton },
-  { name: "Snacks", image: snacks },
+  { name: "Accessories", image: ajrakDetail },
+  { name: "Gadgets", image: shippingContainers },
+  { name: "Sports Gear", image: cottonBales },
+  { name: "Snacks", image: driedGoods },
 ];
 
 const paths = [
@@ -25,17 +20,20 @@ const paths = [
     title: "Trade With Us",
     text: "Want to start importing? We guide you through sourcing, logistics, and customs clearance, so you can launch with confidence.",
     action: "Learn More",
+    to: "/models/trade-with-us",
   },
   {
     title: "Back a Product",
     text: "Choose from our existing products and share in the profit based on performance. Start with a budget that suits you.",
     action: "Explore Product Options",
+    to: "/models/back-a-product",
     investment: true,
   },
   {
     title: "Grow With Us",
     text: "Become an investor or shareholder and help build a youth-focused trade platform from the ground up.",
     action: "Talk to Our Team",
+    to: "/models/grow-with-us",
     investment: true,
   },
 ];
@@ -58,19 +56,21 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden text-white">
-        <div className="mx-auto grid max-w-7xl md:grid-cols-2">
+        <div className="mx-auto grid min-[769px]:grid-cols-2">
           {/* Text: same width as the image, padding lives here */}
-            <div className="bg-navy-800 animate-fade-up flex flex-col justify-center px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+            <div
+              className="lg:bg-navy-700 containers-background animate-fade-up flex flex-col justify-center px-4 py-14 sm:px-6 md:py-20 lg:px-8"
+              style={{ "--hero-image": `url("${shippingContainers}")` }}
+            >
               <p id="bussiness-goal" className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold uppercase tracking-[0.25em] text-white/70">
                 {['Ajrak', 'Impex', 'International'].map((word) => (
                   <span key={word} className="inline-flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.10)]" aria-hidden="true" />
-                    <span>{word}</span>
+                      <span>{word}</span>
                   </span>
                 ))}
               </p>
-              <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
-                  Global Trends. <br />Local Prices.
+              <h1 className="tex-centermt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
+                  Global Trends <br />Local Prices
                   <span className="mt-2 block text-2xl text-white/85 sm:text-3xl">Your Trade Journey Starts Here.</span>
                 </h1>
               <p className="mt-5 max-w-xl text-lg leading-7 text-white/80">
@@ -78,43 +78,19 @@ export default function Home() {
               </p>
       <div className="mt-7 flex flex-wrap gap-3">
         <Button to="/contact">Start Your Journey <Arrow className="h-4 w-4" /></Button>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-md border border-white/70 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-800"
-        >
-          Chat on WhatsApp
-        </a>
+        
       </div>
             </div>
 
           {/* Image: same width, fills the full height of the section */}
-            <div className="relative min-h-72 sm:min-h-96 md:min-h-full">
+            <div className="relative hidden min-h-72 animate-fade-up min-[769px]:block sm:min-h-96 md:min-h-full">
               <ImageBox
-                 src={containers}
+                 src={shippingContainers}
                  alt="Shipping containers"
                 className="absolute inset-0 h-full w-full object-cover"
               />
            </div>
        </div>
-
-      </section>
-
-      <section className="bg-maroon-700 text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-evenly gap-x-6 gap-y-3 px-4 py-4 text-center text-sm font-semibold sm:px-6 lg:px-8">
-          {[
-            "Registered Company",
-            "Offices in Karachi & Khairpur",
-            "Beginner-Friendly",
-            "Quality-Checked Products",
-          ].map((item) => (
-            <span key={item} className="inline-flex items-center gap-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.12)]" aria-hidden="true" />
-              <span>{item}</span>
-            </span>
-          ))}
-        </div>
       </section>
 
       <section className="bg-white py-14">
@@ -137,7 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ajrak-pattern py-14">
+      <section className="ajrak-pattern py-14" id="layers-to-work">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle eyebrow="Find your starting point" title="Three Ways to Grow With Us" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -147,13 +123,8 @@ export default function Home() {
                   <p className="text-sm font-bold uppercase tracking-wider text-maroon-700">0{index + 1}</p>
                   <h3 className="mt-2 text-xl font-extrabold text-navy-800">{path.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{path.text}</p>
-                  <Button to="/contact" className="mt-5 self-start">{path.action} <Arrow className="h-4 w-4" /></Button>
-                  {path.investment && (
-                    <p className="mt-3 text-xs leading-5 text-slate-500">
-                      Investment involves risk. Returns depend on product and market performance and are not guaranteed.{" "}
-                      <Link to="/legal#risk" className="font-semibold text-maroon-700 underline">Read the risk disclaimer</Link>.
-                    </p>
-                  )}
+                  <Button to={path.to} className="mt-5 self-start">{path.action} <Arrow className="h-4 w-4" /></Button>
+                  
                 </article>
               </Reveal>
             ))}
@@ -178,7 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="ajrak-pattern py-14">
+      <section  className="ajrak-pattern py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Simple From Start to Finish" />
           <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -219,9 +190,7 @@ export default function Home() {
           <h2 className="text-2xl font-extrabold sm:text-3xl">Ready to Begin?</h2>
           <p className="mt-3 text-white/75">Your first step into global trade is a single message away.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-navy-800 transition hover:bg-slate-100">
-              Message Us on WhatsApp
-            </a>
+            
             <a href="mailto:ajrakimpex@gmail.com" className="inline-flex items-center rounded-md border border-white px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-800">
               Send an Email
             </a>

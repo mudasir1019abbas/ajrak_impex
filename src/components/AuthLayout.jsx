@@ -1,12 +1,16 @@
 import { Emblem } from "./Logo.jsx";
-import ImageBox from "./ImageBox.jsx";
+import { shippingContainers } from "../data/images/index.js";
 
 // Split-screen layout shared by Login and Signup.
 export default function AuthLayout({ title, subtitle, children, footer }) {
   return (
     <section className="grid min-h-[calc(100vh-5rem)] lg:grid-cols-2">
       <div className="ajrak-pattern-dark relative hidden items-center justify-center overflow-hidden lg:flex">
-        <ImageBox src="/images/containers.jpg" alt="Shipping containers" className="absolute inset-0 h-full w-full opacity-25" label="" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url(${shippingContainers})` }}
+        />
         <div className="relative z-10 max-w-sm animate-fade-up px-8 text-center text-white">
           <Emblem className="mx-auto h-24 w-24 animate-float" />
           <h2 className="mt-6 text-3xl font-extrabold">Your Trade Journey Starts Here.</h2>

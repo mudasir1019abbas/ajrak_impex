@@ -20,7 +20,11 @@ npm run build            # production build in /dist
 | `/about` | About / history timeline / story / values / certifications |
 | `/services` | Logistics, supply chain, catalog, case studies |
 | `/global-trade` | Trade lanes and why buyers choose us |
-| `/blog` | Blog list with tag filter |
+| `/models/trade-with-us` | Import and trade support model |
+| `/models/back-a-product` | Product participation model |
+| `/models/grow-with-us` | Investor or shareholder model |
+| `/news` | News list with topic filter |
+| `/news/:slug` | News article |
 | `/contact` | Contact form, map, contact info |
 | `/login`, `/signup` | Auth pages with validation |
 | `/account` | Example protected page |
@@ -62,7 +66,7 @@ Missing images fall back to a branded pattern placeholder, so the layout never b
 ```
 src/
   components/  Navbar, Footer, Logo, Icons, Reveal, ImageBox, UI, AuthLayout, ProtectedRoute
-  pages/       Home, About, Services, GlobalTrade, Blog, Contact, Login, Signup, Account, NotFound
+  pages/       Home, About, Services, News, NewsArticle, Contact, Login, Signup, Account, NotFound
   context/     AuthContext
   services/    api, authService
   hooks/       useReveal

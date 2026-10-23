@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import bullEmblem from "../assests/images/logo/ajrak-bull-emblem.png";
+import { bullEmblem } from "../data/images/index.js";
 
 export function Emblem({ className = "h-11 w-11" }) {
   return <img src={bullEmblem} className={className} alt="ajrak-logo" />;

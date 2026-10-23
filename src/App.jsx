@@ -5,8 +5,10 @@ import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
-import Blog from "./pages/Blog.jsx";
-import BlogPost from "./pages/BlogPost.jsx";
+import BusinessModel from "./pages/BusinessModel.jsx";
+import News from "./pages/News.jsx";
+import NewsArticle from "./pages/NewsArticle.jsx";
+import Careers from "./pages/Careers.jsx";
 import Legal from "./pages/Legal.jsx";
 import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
@@ -41,8 +43,12 @@ export default function App() {
           <Route path="/products" element={<Services />} />
           <Route path="/services" element={<Services />} />
           <Route path="/global-trade" element={<Navigate to="/products" replace />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/models/trade-with-us" element={<BusinessModel model="trade-with-us" />} />
+          <Route path="/models/back-a-product" element={<BusinessModel model="back-a-product" />} />
+          <Route path="/models/grow-with-us" element={<BusinessModel model="grow-with-us" />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/news/:slug" element={<NewsArticle />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/login" element={<Login />} />

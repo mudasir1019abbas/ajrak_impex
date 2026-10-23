@@ -2,18 +2,14 @@ import Reveal from "../components/Reveal.jsx";
 import ImageBox from "../components/ImageBox.jsx";
 import { Button, PageHero, SectionTitle } from "../components/UI.jsx";
 import { Arrow, Container, FileCheck, Globe } from "../components/Icons.jsx";
-import stoles from "../assests/images/stoles.jpg";
-import ajrak from "../assests/images/ajrak-images.jpg";
-import containers from "../assests/images/shipping-containers.jpg";
-import cotton from "../assests/images/coton-bales.jpg";
-import snacks from "../assests/images/dried.webp";
+import { ajrak, cottonBales, driedGoods, shippingContainers, stoles } from "../data/images/index.js";
 
 const categories = [
   { title: "Fashion", text: "Explore styles and apparel selected for changing trends.", image: stoles },
   { title: "Accessories", text: "Discover accessories that add a distinctive touch.", image: ajrak },
-  { title: "Gadgets", text: "Ask us about product options and current availability.", image: containers },
-  { title: "Sports Gear", text: "Talk with our team about sourcing sports and activity products.", image: cotton },
-  { title: "Snacks", text: "Explore snack products and ask about current selections.", image: snacks },
+  { title: "Gadgets", text: "Ask us about product options and current availability.", image: shippingContainers },
+  { title: "Sports Gear", text: "Talk with our team about sourcing sports and activity products.", image: cottonBales },
+  { title: "Snacks", text: "Explore snack products and ask about current selections.", image: driedGoods },
 ];
 
 const support = [

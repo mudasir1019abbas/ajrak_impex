@@ -6,16 +6,14 @@ const sitemap = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Products", to: "/products" },
-  { label: "Blog", to: "/blog" },
+  { label: "News", to: "/news" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact Us", to: "/contact" },
 ];
 
 const socialLinks = [
   { label: "Email", icon: Mail, href: "mailto:ajrakimpex@gmail.com" },
   { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/Ajrakimpex" },
-  { label: "WhatsApp", icon: WhatsApp, href: "https://wa.me/923005310821" },
-  { label: "Linkedin", icon: Linkedin, href:"" },
-  { label: "Twitter", icon: Twitter,   href:""},
 ];
 
 export default function Footer() {
@@ -77,7 +75,6 @@ export default function Footer() {
             <li><Link to="/legal#terms" className="transition-colors hover:text-white hover:underline">Terms</Link></li>
             <li><Link to="/legal#privacy" className="transition-colors hover:text-white hover:underline">Privacy</Link></li>
             <li><Link to="/legal#risk" className="transition-colors hover:text-white hover:underline">Risk Disclaimer</Link></li>
-            <li><Link to="/contact" className="transition-colors hover:text-white hover:underline">Careers</Link></li>
           </ul>
         </div>
       </div>
