@@ -86,9 +86,9 @@ export default function Home() {
                 </span>
               ))}
             </p>
-            <h1 className="tex-centermt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
-              Trade Between Pakistan, China and the Middle East, <br />
-              Handled End to End.
+            <h1 className="mt-4 max-w-3xl text-left text-[clamp(2rem,2.75vw,2.75rem)] font-extrabold leading-[1.1] tracking-tight">
+              <span>Trade Between Pakistan, China and the Middle East,</span>
+              <span className="block">Handled End to End.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-7 text-white/80">
               Ajrak Impex sources and ships machinery, electronics, consumer
