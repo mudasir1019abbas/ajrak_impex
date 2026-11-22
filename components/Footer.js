@@ -31,7 +31,7 @@ async function CurrentYear() {
 export default function Footer() {
   return (
     <footer className="ajrak-pattern-dark text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-3 lg:px-0">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-3 lg:px-12">
         <div>
           <Logo light />
           <p className="mt-4 text-sm font-semibold text-white/90">Ajrak Impex International (SMC-Private) Limited</p>
