@@ -1,11 +1,18 @@
 import { query } from "@/lib/db";
 
-// SQL version of the old Mongoose ContactMessage model.
+// SQL access for inquiry records.
 
-export async function createContactMessage({ name, email, subject, message, user }) {
+export async function createInquiryMessage({
+  name,
+  email,
+  phone,
+  subject,
+  message,
+  user,
+}) {
   await query(
-    "INSERT INTO contact_messages (name, email, subject, message, user_id) VALUES (?, ?, ?, ?, ?)",
-    [name, email, subject, message, user ?? null]
+    "INSERT INTO inquiries (name, email, phone, subject, message, user_id) VALUES (?, ?, ?, ?, ?, ?)",
+    [name, email ?? null, phone ?? null, subject, message, user ?? null]
   );
 }
 
@@ -15,13 +22,13 @@ export async function getUserInquirySummary(userId) {
     `SELECT COUNT(*) AS total,
             COALESCE(SUM(status <> 'replied'), 0) AS awaitingReply,
             COALESCE(SUM(status = 'replied'), 0) AS replied
-       FROM contact_messages
+       FROM inquiries
       WHERE user_id = ?`,
     [userId]
   );
   const inquiries = await query(
     `SELECT id, subject, message, status, created_at AS createdAt
-       FROM contact_messages
+       FROM inquiries
       WHERE user_id = ?
       ORDER BY created_at DESC
       LIMIT 10`,
@@ -48,6 +55,7 @@ function rowToAdminInquiry(row) {
     id: String(row.id),
     name: row.name,
     email: row.email,
+    phone: row.phone,
     subject: row.subject,
     message: row.message,
     status: row.status,
@@ -62,7 +70,7 @@ export async function getAdminInquiryStats() {
             COALESCE(SUM(status = 'new'), 0) AS newCount,
             COALESCE(SUM(status = 'read'), 0) AS readCount,
             COALESCE(SUM(status = 'replied'), 0) AS repliedCount
-       FROM contact_messages`
+       FROM inquiries`
   );
   const row = rows[0];
   return {
@@ -87,20 +95,20 @@ export async function getAdminInquiryPage({
     params.push(status);
   }
   if (search) {
-    conditions.push("(name LIKE ? OR email LIKE ? OR subject LIKE ? OR message LIKE ?)");
+    conditions.push("(name LIKE ? OR email LIKE ? OR phone LIKE ? OR subject LIKE ? OR message LIKE ?)");
     const term = `%${search}%`;
-    params.push(term, term, term, term);
+    params.push(term, term, term, term, term);
   }
 
   const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
   const countRows = await query(
-    `SELECT COUNT(*) AS total FROM contact_messages ${where}`,
+    `SELECT COUNT(*) AS total FROM inquiries ${where}`,
     params
   );
   const rows = await query(
-    `SELECT id, name, email, subject, message, status,
+    `SELECT id, name, email, phone, subject, message, status,
             created_at AS createdAt, user_id AS userId
-       FROM contact_messages
+       FROM inquiries
        ${where}
       ORDER BY created_at DESC, id DESC
       LIMIT ? OFFSET ?`,
@@ -113,12 +121,12 @@ export async function getAdminInquiryPage({
   };
 }
 
-export async function updateContactMessageStatus(id, status) {
-  await query("UPDATE contact_messages SET status = ? WHERE id = ?", [status, id]);
+export async function updateInquiryStatus(id, status) {
+  await query("UPDATE inquiries SET status = ? WHERE id = ?", [status, id]);
   const rows = await query(
-    `SELECT id, name, email, subject, message, status,
+    `SELECT id, name, email, phone, subject, message, status,
             created_at AS createdAt, user_id AS userId
-       FROM contact_messages
+       FROM inquiries
       WHERE id = ?
       LIMIT 1`,
     [id]

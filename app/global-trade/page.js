@@ -64,7 +64,7 @@ export default function GlobalTradePage() {
                 </li>
               ))}
             </ol>
-            <Button href="/contact" variant="light" className="mt-6 w-full">Submit a Trade Inquiry <Arrow className="h-4 w-4" /></Button>
+            <Button href="/inquiry?service=Global%20Trade" variant="light" className="mt-6 w-full">Submit a Trade Inquiry <Arrow className="h-4 w-4" /></Button>
           </Reveal>
         </div>
       </section>

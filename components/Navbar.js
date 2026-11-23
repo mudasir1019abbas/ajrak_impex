@@ -71,6 +71,7 @@ const nav = [
       { label: "Articles & Insights", to: "/news" },
     ],
   },
+  { label: "Inquiry", to: "/inquiry" },
   { label: "Contact Us", to: "/contact" },
 ];
 

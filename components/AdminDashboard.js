@@ -342,10 +342,10 @@ export default function AdminDashboard({ admin }) {
             <div className="flex flex-col gap-4 border-b border-slate-100 p-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <h2 className="text-xl font-bold text-navy-800">
-                  Contact inquiries
+                  Inquiries
                 </h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  Search messages and update their handling status.
+                  Search messages, update status, or refresh for new submissions.
                 </p>
               </div>
               <form
@@ -365,7 +365,7 @@ export default function AdminDashboard({ admin }) {
                   value={inquirySearchInput}
                   maxLength={100}
                   onChange={(event) => setInquirySearchInput(event.target.value)}
-                  placeholder="Name, email, subject or message"
+                  placeholder="Name, email, phone, subject or message"
                   className="min-w-0 rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-maroon-700 focus:ring-2 focus:ring-maroon-700/20 sm:w-64"
                 />
                 <label className="sr-only" htmlFor="inquiry-status-filter">
@@ -394,6 +394,18 @@ export default function AdminDashboard({ admin }) {
                 >
                   Search
                 </button>
+                <button
+                  type="button"
+                  disabled={loading}
+                  onClick={() => {
+                    setError("");
+                    setNotice("");
+                    setReloadKey((current) => current + 1);
+                  }}
+                  className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-navy-800 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Refresh
+                </button>
               </form>
             </div>
 
@@ -410,14 +422,24 @@ export default function AdminDashboard({ admin }) {
                         <h3 className="break-words font-bold text-navy-800">
                           {inquiry.subject}
                         </h3>
-                        <p className="mt-1 text-sm text-slate-600">
-                          {inquiry.name} ·{" "}
-                          <a
-                            href={`mailto:${inquiry.email}`}
-                            className="text-maroon-700 underline"
-                          >
-                            {inquiry.email}
-                          </a>
+                        <p className="mt-1 flex flex-wrap gap-x-2 text-sm text-slate-600">
+                          <span>{inquiry.name}</span>
+                          {inquiry.email && (
+                            <a
+                              href={`mailto:${inquiry.email}`}
+                              className="text-maroon-700 underline"
+                            >
+                              {inquiry.email}
+                            </a>
+                          )}
+                          {inquiry.phone && (
+                            <a
+                              href={`tel:${inquiry.phone.replace(/[^+\d]/g, "")}`}
+                              className="text-maroon-700 underline"
+                            >
+                              {inquiry.phone}
+                            </a>
+                          )}
                         </p>
                       </div>
                       <div className="flex shrink-0 flex-wrap items-center gap-3">

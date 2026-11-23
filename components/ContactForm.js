@@ -1,188 +1,218 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { Button, Field } from "@/components/UI";
-import { Emblem } from "@/components/Logo";
-import { useAuth } from "@/context/AuthContext";
+import {
+  GENERAL_CONTACT_SUBJECTS,
+  validateContact,
+} from "@/lib/validators";
 
-const INQUIRY_CATEGORIES = [
-  "Machinery",
-  "Electronic Items",
-  "Gaming Gadgets",
-  "Other Gadgets",
-  "Mobile Accessories",
-  "Toys",
-  "Sleeping and Traveling Items",
-  "Shoes",
-  "Home Décor",
-  "Kitchen Accessories",
-  "Jewelry",
-  "Industrial Chemicals",
-  "Sodium Dithionite (Rangkat)",
-  "Other",
-];
-
-const WHATSAPP_NUMBER = "923005310821";
-const OFFICIAL_EMAIL = "ajrakimpex@gmail.com";
-const initial = {
+const initialValues = {
   name: "",
-  company: "",
-  category: "",
-  itemDetails: "",
-  quantity: "",
-  destination: "",
-};
-
-const validateInquiry = (values) => {
-  const errors = {};
-  if (values.name.trim().length < 2) errors.name = "Please enter your name.";
-  if (!values.company.trim()) errors.company = "Please enter your company name.";
-  if (!INQUIRY_CATEGORIES.includes(values.category)) errors.category = "Choose a product category.";
-  if (values.itemDetails.trim().length < 5) errors.itemDetails = "Describe the item or specification.";
-  if (!values.quantity.trim()) errors.quantity = "Please enter the required quantity.";
-  if (!values.destination.trim()) errors.destination = "Please enter the destination.";
-  return errors;
+  email: "",
+  phone: "",
+  subject: "General Question",
+  message: "",
 };
 
 export default function ContactForm() {
-  const { isAuthenticated, loading, user } = useAuth();
-  const [values, setValues] = useState(initial);
-  const [nameEdited, setNameEdited] = useState(false);
+  const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("");
-  const nameValue = nameEdited ? values.name : values.name || user?.name || "";
-
-  useEffect(() => {
-    const category = new URLSearchParams(window.location.search).get("category");
-    if (category && INQUIRY_CATEGORIES.includes(category)) {
-      setValues((current) => ({ ...current, category }));
-    }
-  }, []);
+  const [feedback, setFeedback] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const onChange = (event) => {
     const { name, value } = event.target;
-    if (name === "name") setNameEdited(true);
     setValues((current) => ({ ...current, [name]: value }));
+    setErrors((current) => ({
+      ...current,
+      [name]: undefined,
+      ...(name === "email" || name === "phone" ? { contact: undefined } : {}),
+    }));
+    setFeedback(null);
   };
 
-  const validate = () => {
-    const nextErrors = validateInquiry({ ...values, name: nameValue });
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const nextErrors = validateContact(values);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length) {
-      setStatus("Please complete all required fields.");
-      return false;
+    setFeedback(null);
+    if (Object.keys(nextErrors).length) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        setErrors(result.errors || {});
+        setFeedback({
+          type: "error",
+          message: result.message || "Unable to send your message. Please try again.",
+        });
+        return;
+      }
+
+      setValues(initialValues);
+      setFeedback({
+        type: "success",
+        message: result.message || "Your message has been received.",
+      });
+    } catch (error) {
+      setFeedback({
+        type: "error",
+        message: error.message || "Unable to send your message. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
     }
-    setStatus("");
-    return true;
   };
-
-  const buildMessage = () =>
-    [
-      "Hello Ajrak Impex,",
-      "",
-      "I would like to make a product inquiry:",
-      `Name: ${nameValue.trim()}`,
-      `Company: ${values.company.trim()}`,
-      `Product Category: ${values.category}`,
-      `Item Details: ${values.itemDetails.trim()}`,
-      `Quantity: ${values.quantity.trim()}`,
-      `Destination: ${values.destination.trim()}`,
-    ].join("\n");
-
-  const sendOnWhatsApp = () => {
-    if (!validate()) return;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
-  const sendByEmail = () => {
-    if (!validate()) return;
-    const subject = `Product Inquiry - ${values.category} - ${values.company.trim()}`;
-    window.location.href = `mailto:${OFFICIAL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildMessage())}`;
-  };
-
-  if (loading) {
-    return (
-      <Reveal direction="left" className="flex min-h-80 items-center justify-center rounded-xl bg-white shadow-lg ring-1 ring-slate-100">
-        <span className="h-10 w-10 animate-spin rounded-full border-4 border-maroon-100 border-t-maroon-700" />
-      </Reveal>
-    );
-  }
-
-  if (!isAuthenticated) {
-    const returnTo = values.category
-      ? `/contact?category=${encodeURIComponent(values.category)}`
-      : "/contact";
-
-    return (
-      <Reveal direction="left">
-        <div className="rounded-xl bg-white p-6 text-center shadow-lg ring-1 ring-slate-100 sm:p-8">
-          <Emblem className="mx-auto h-12 w-12" />
-          <h2 className="mt-4 text-xl font-extrabold text-navy-800">Product Inquiry</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-600">
-            Please log in or create an account to submit a product inquiry.
-          </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href={`/login?from=${encodeURIComponent(returnTo)}`}>Log in</Button>
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center rounded-md border border-maroon-700 px-5 py-2.5 text-sm font-semibold text-maroon-700 transition hover:bg-maroon-50"
-            >
-              Create account
-            </Link>
-          </div>
-        </div>
-      </Reveal>
-    );
-  }
 
   return (
     <Reveal direction="left">
-      <form onSubmit={(event) => event.preventDefault()} noValidate className="rounded-xl bg-white p-6 shadow-lg ring-1 ring-slate-100 sm:p-8">
-        <div className="mb-5 flex flex-col items-center">
-          <Emblem className="h-12 w-12" />
-          <h2 className="mt-2 text-xl font-extrabold text-navy-800">PRODUCT INQUIRY</h2>
-          <p className="mt-2 text-center text-sm text-slate-500">Complete the details, then choose WhatsApp or email.</p>
-        </div>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        className="rounded-xl bg-white p-6 shadow-lg ring-1 ring-slate-100 sm:p-8"
+      >
+        <h2 className="text-xl font-extrabold text-navy-800">Send Us a Message</h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          Send general questions, partnership notes, or office inquiries here.
+          For a specific product quote or investment request, visit our{" "}
+          <Link
+            href="/inquiry"
+            className="font-semibold text-maroon-700 underline"
+          >
+            Product &amp; Trade Inquiry
+          </Link>{" "}
+          page.
+        </p>
 
-        <div className="space-y-4">
-          <Field label="Name" id="name" name="name" value={nameValue} onChange={onChange} error={errors.name} placeholder="Your name" autoComplete="name" />
-          <Field label="Company" id="company" name="company" value={values.company} onChange={onChange} error={errors.company} placeholder="Your company name" autoComplete="organization" />
-          <Field label="Product Category" id="category" error={errors.category}>
-            {(cls) => (
-              <select id="category" name="category" value={values.category} onChange={onChange} className={cls}>
-                <option value="">Select a category</option>
-                {INQUIRY_CATEGORIES.map((category) => (
-                  <option key={category} value={category}>{category}</option>
+        <div className="mt-6 space-y-4">
+          <Field
+            label="Full Name *"
+            id="contact-name"
+            name="name"
+            value={values.name}
+            onChange={onChange}
+            error={errors.name}
+            placeholder="Your full name"
+            autoComplete="name"
+            required
+            maxLength={100}
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field
+              label="Email"
+              id="contact-email"
+              name="email"
+              type="email"
+              value={values.email}
+              onChange={onChange}
+              error={errors.email}
+              placeholder="you@company.com"
+              autoComplete="email"
+              aria-invalid={!!errors.email || !!errors.contact}
+              aria-describedby={errors.contact ? "contact-method-error" : "contact-method-help"}
+            />
+            <Field
+              label="Phone / WhatsApp"
+              id="contact-phone"
+              name="phone"
+              type="tel"
+              value={values.phone}
+              onChange={onChange}
+              error={errors.phone}
+              placeholder="+92 300 0000000"
+              autoComplete="tel"
+              maxLength={32}
+              aria-invalid={!!errors.phone || !!errors.contact}
+              aria-describedby={errors.contact ? "contact-method-error" : "contact-method-help"}
+            />
+          </div>
+          <p id="contact-method-help" className="-mt-2 text-xs text-slate-500">
+            Provide at least one valid email address or phone / WhatsApp number.
+          </p>
+          {errors.contact && (
+            <p id="contact-method-error" role="alert" className="-mt-2 text-sm text-red-600">
+              {errors.contact}
+            </p>
+          )}
+
+          <Field label="Subject / Topic *" id="contact-subject" error={errors.subject}>
+            {(className) => (
+              <select
+                id="contact-subject"
+                name="subject"
+                value={values.subject}
+                onChange={onChange}
+                className={className}
+                required
+              >
+                {GENERAL_CONTACT_SUBJECTS.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject}
+                  </option>
                 ))}
               </select>
             )}
           </Field>
-          <Field label="Item Details" id="itemDetails" error={errors.itemDetails}>
-            {(cls) => (
-              <textarea id="itemDetails" name="itemDetails" rows={4} value={values.itemDetails} onChange={onChange} placeholder="Model, grade, specification, packing, or other details" className={cls} />
+
+          <Field label="Message *" id="contact-message" error={errors.message}>
+            {(className) => (
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={5}
+                value={values.message}
+                onChange={onChange}
+                placeholder="How can we help?"
+                className={className}
+                required
+                maxLength={5000}
+              />
             )}
           </Field>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Quantity" id="quantity" name="quantity" value={values.quantity} onChange={onChange} error={errors.quantity} placeholder="e.g. 100 cartons" />
-            <Field label="Destination" id="destination" name="destination" value={values.destination} onChange={onChange} error={errors.destination} placeholder="City or country" />
-          </div>
         </div>
 
-        {status && (
-          <p role="alert" className="mt-4 animate-fade-up rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{status}</p>
+        <p className="mt-4 text-xs leading-5 text-slate-500">
+          By sending this message, you acknowledge our{" "}
+          <Link href="/legal#terms" className="underline hover:text-maroon-700">
+            Terms
+          </Link>
+          ,{" "}
+          <Link href="/legal#privacy" className="underline hover:text-maroon-700">
+            Privacy Policy
+          </Link>
+          , and{" "}
+          <Link href="/legal#risk" className="underline hover:text-maroon-700">
+            Risk Disclaimer
+          </Link>
+          .
+        </p>
+
+        {feedback && (
+          <p
+            role={feedback.type === "error" ? "alert" : "status"}
+            className={`mt-4 rounded-md px-3 py-2 text-sm ${
+              feedback.type === "error"
+                ? "bg-red-50 text-red-700"
+                : "bg-green-50 text-green-800"
+            }`}
+          >
+            {feedback.message}
+          </p>
         )}
 
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-          <Button type="button" onClick={sendOnWhatsApp} className="w-full sm:flex-1">
-            Send on WhatsApp
-          </Button>
-          <Button type="button" variant="outline" onClick={sendByEmail} className="w-full sm:flex-1">
-            Send by Email
-          </Button>
-        </div>
+        <Button type="submit" disabled={submitting} className="mt-5 w-full">
+          {submitting ? "Sending Message..." : "Send Message"}
+        </Button>
       </form>
     </Reveal>
   );

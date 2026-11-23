@@ -3,7 +3,7 @@ import { getSessionUserId } from "@/lib/session";
 import { fail, json, readJson, serverError, tooMany } from "@/lib/http";
 import { rateLimit } from "@/lib/rateLimit";
 import { validateContact } from "@/lib/validators";
-import { createContactMessage } from "@/models/ContactMessage";
+import { createInquiryMessage } from "@/models/InquiryMessage";
 import { parseUserId } from "@/models/User";
 
 export async function POST(request) {
@@ -22,9 +22,16 @@ export async function POST(request) {
     // Link the message to the account when the sender is logged in
     const userId = parseUserId(await getSessionUserId());
 
-    await createContactMessage({
+    await createInquiryMessage({
       name: body.name.trim(),
-      email: body.email.trim().toLowerCase(),
+      email:
+        typeof body.email === "string" && body.email.trim()
+          ? body.email.trim().toLowerCase()
+          : null,
+      phone:
+        typeof body.phone === "string" && body.phone.trim()
+          ? body.phone.trim()
+          : null,
       subject: body.subject,
       message: body.message.trim(),
       user: userId,

@@ -108,7 +108,7 @@ export default function Home() {
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button
-                href="/contact"
+                href="/inquiry"
                 className="min-h-12 w-full px-6 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy-800 sm:w-auto"
               >
                 Send a Trade Inquiry <Arrow className="h-4 w-4" />
@@ -180,7 +180,7 @@ export default function Home() {
             </Reveal>
           </div>
           <div className="mt-7 text-center">
-            <Button href="/contact">
+            <Button href="/inquiry">
               Discuss a Trade Inquiry <Arrow className="h-4 w-4" />
             </Button>
           </div>

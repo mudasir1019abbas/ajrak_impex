@@ -50,9 +50,9 @@ export async function getAdminUserPage({ search, limit, offset }) {
   );
   const rows = await query(
     `SELECT u.id, u.name, u.email, u.created_at AS createdAt,
-            COUNT(cm.id) AS inquiryCount
+            COUNT(i.id) AS inquiryCount
        FROM users u
-       LEFT JOIN contact_messages cm ON cm.user_id = u.id
+       LEFT JOIN inquiries i ON i.user_id = u.id
        ${where}
       GROUP BY u.id, u.name, u.email, u.created_at
       ORDER BY u.created_at DESC, u.id DESC

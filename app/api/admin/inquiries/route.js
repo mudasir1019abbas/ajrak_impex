@@ -1,10 +1,11 @@
 import { connection } from "next/server";
+import { connectDB } from "@/lib/db";
 import { fail, json, readJson, serverError } from "@/lib/http";
 import { requireAdminApi } from "@/lib/adminApi";
 import {
   getAdminInquiryPage,
-  updateContactMessageStatus,
-} from "@/models/ContactMessage";
+  updateInquiryStatus,
+} from "@/models/InquiryMessage";
 
 const PAGE_SIZE = 20;
 const STATUSES = new Set(["new", "read", "replied"]);
@@ -20,6 +21,7 @@ export async function GET(request) {
   try {
     const denied = await requireAdminApi();
     if (denied) return denied;
+    await connectDB();
 
     const url = new URL(request.url);
     const pagination = getPagination(url);
@@ -48,6 +50,7 @@ export async function PATCH(request) {
   try {
     const denied = await requireAdminApi();
     if (denied) return denied;
+    await connectDB();
 
     const body = await readJson(request);
     if (!body) return fail("Invalid request.", 400);
@@ -60,7 +63,7 @@ export async function PATCH(request) {
       return fail("Invalid inquiry status.", 422);
     }
 
-    const inquiry = await updateContactMessageStatus(id, body.status);
+    const inquiry = await updateInquiryStatus(id, body.status);
     if (!inquiry) return fail("Inquiry not found.", 404);
     return json({ inquiry });
   } catch (err) {

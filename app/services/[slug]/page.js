@@ -56,7 +56,7 @@ export default async function ServicePage({ params }) {
           <div className="mx-auto max-w-2xl px-4">
             <h2 className="text-2xl font-extrabold text-navy-800">Need guidance on this division?</h2>
             <p className="mt-3 text-slate-600">Share your requirement and the relevant team will explain the next steps.</p>
-            <Button href="/contact" className="mt-5">Request a Consultation <Arrow className="h-4 w-4" /></Button>
+            <Button href={`/inquiry?service=${encodeURIComponent(division.title)}`} className="mt-5">Request a Consultation <Arrow className="h-4 w-4" /></Button>
           </div>
         </section>
       </>
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }) {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/65">Consultation</p>
             <h2 className="mt-2 text-xl font-extrabold">Discuss this service</h2>
             <p className="mt-3 text-sm leading-6 text-white/75">Tell us what you need and we will help identify the appropriate next step.</p>
-            <Button href="/contact" variant="light" className="mt-5 w-full">Send an Inquiry <Arrow className="h-4 w-4" /></Button>
+            <Button href={`/inquiry?service=${encodeURIComponent(divisionForService?.title || service.title)}`} variant="light" className="mt-5 w-full">Send an Inquiry <Arrow className="h-4 w-4" /></Button>
             <a href="https://wa.me/923005310821" target="_blank" rel="noreferrer" className="mt-3 block text-center text-sm font-semibold text-white underline">
               Chat on WhatsApp
             </a>

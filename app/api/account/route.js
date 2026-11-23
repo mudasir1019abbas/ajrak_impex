@@ -2,7 +2,7 @@ import { connection } from "next/server";
 import { connectDB } from "@/lib/db";
 import { destroySession, getSessionUserId } from "@/lib/session";
 import { fail, json, serverError } from "@/lib/http";
-import { getUserInquirySummary } from "@/models/ContactMessage";
+import { getUserInquirySummary } from "@/models/InquiryMessage";
 import { findUserById, parseUserId } from "@/models/User";
 
 export async function GET() {

@@ -86,7 +86,7 @@ export default function HowWeWorkPage() {
               <li>Destination country or port</li>
               <li>Preferred timing and special requirements</li>
             </ul>
-            <Button href="/contact" variant="light" className="mt-6 w-full">
+            <Button href="/inquiry" variant="light" className="mt-6 w-full">
               Submit an Inquiry <Arrow className="h-4 w-4" />
             </Button>
           </Reveal>

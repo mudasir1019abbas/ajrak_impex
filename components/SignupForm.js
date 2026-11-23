@@ -8,6 +8,7 @@ import { Button, Field } from "@/components/UI";
 import { Eye } from "@/components/Icons";
 import { validateRegister } from "@/lib/validators";
 import { useAuth } from "@/context/AuthContext";
+import { getRedirectTarget } from "@/lib/redirect";
 
 function strength(pw) {
   let s = 0;
@@ -31,9 +32,9 @@ export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // Already signed in (or just signed up): go to the account page
+  // Continue to the requested page, or fall back to the account dashboard.
   useEffect(() => {
-    if (isAuthenticated) router.replace("/account");
+    if (isAuthenticated) router.replace(getRedirectTarget());
   }, [isAuthenticated, router]);
 
   if (isAuthenticated) return null;

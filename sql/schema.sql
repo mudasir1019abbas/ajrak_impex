@@ -14,10 +14,11 @@ CREATE TABLE IF NOT EXISTS users (
   UNIQUE KEY uq_users_email (email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS contact_messages (
+CREATE TABLE IF NOT EXISTS inquiries (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
-  email VARCHAR(254) NOT NULL,
+  email VARCHAR(254) NULL,
+  phone VARCHAR(32) NULL,
   subject VARCHAR(100) NOT NULL,
   message TEXT NOT NULL,
   user_id INT UNSIGNED NULL,
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
-  KEY idx_cm_user (user_id),
-  KEY idx_cm_status (status),
-  CONSTRAINT fk_cm_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
+  KEY idx_inquiries_user (user_id),
+  KEY idx_inquiries_status (status),
+  CONSTRAINT fk_inquiries_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

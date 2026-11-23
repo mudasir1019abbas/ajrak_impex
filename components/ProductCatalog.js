@@ -23,28 +23,30 @@ export default function ProductCatalog({ categories }) {
   return (
     <>
       <div
-        className="mb-8 flex min-w-0 flex-wrap justify-center gap-2 px-1 py-2"
+        className="mb-8 min-w-0 max-w-full touch-pan-x overflow-x-auto overscroll-x-contain scrollbar-hide py-2"
         role="group"
         aria-label="Filter products by category"
       >
-        {categoryNames.map((category) => {
-          const selected = category === activeCategory;
-          return (
-            <button
-              key={category}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => setActiveCategory(category)}
-              className={`min-w-0 max-w-full rounded-full border px-4 py-2 text-center text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2 ${
-                selected
-                  ? "border-maroon-700 bg-maroon-700 text-white shadow-sm"
-                  : "border-slate-200 bg-white text-navy-800 hover:border-maroon-700 hover:text-maroon-700"
-              }`}
-            >
-              {category}
-            </button>
-          );
-        })}
+        <div className="flex w-max min-w-full flex-nowrap justify-start gap-2 px-1">
+          {categoryNames.map((category) => {
+            const selected = category === activeCategory;
+            return (
+              <button
+                key={category}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setActiveCategory(category)}
+                className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-center text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2 ${
+                  selected
+                    ? "border-maroon-700 bg-maroon-700 text-white shadow-sm"
+                    : "border-slate-200 bg-white text-navy-800 hover:border-maroon-700 hover:text-maroon-700"
+                }`}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <p className="mb-5 text-center text-sm text-slate-500" aria-live="polite">

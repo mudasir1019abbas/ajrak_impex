@@ -5,7 +5,8 @@ import { MapPin, Phone, Mail } from "@/components/Icons";
 
 export const metadata = {
   title: "Contact Us",
-  description: "Tell us your goal, product interest, or budget. Our team will help you understand the next step.",
+  description:
+    "Contact Ajrak Impex International with general questions, partnership notes, or office inquiries.",
 };
 const contactInfo = {
   company: "Ajrak Impex International (SMC-Private) Limited",
@@ -19,7 +20,10 @@ const contactInfo = {
 export default function Contact() {
   return (
     <>
-      <PageHero title="Contact Us" text="Tell us your goal, product interest, or budget. Our team will help you understand the next step." />
+      <PageHero
+        title="Contact Us"
+        text="Have a general question about our company, offices, or working together? Send us a message."
+      />
       <section className="ajrak-pattern py-12">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <ContactForm />

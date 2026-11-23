@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import { connectDB } from "@/lib/db";
 import { fail, json, serverError } from "@/lib/http";
 import { requireAdminApi } from "@/lib/adminApi";
 import { getAdminUserPage } from "@/models/User";
@@ -10,6 +11,7 @@ export async function GET(request) {
   try {
     const denied = await requireAdminApi();
     if (denied) return denied;
+    await connectDB();
 
     const url = new URL(request.url);
     const page = Number(url.searchParams.get("page") || "1");

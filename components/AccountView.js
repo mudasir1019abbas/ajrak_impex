@@ -145,7 +145,7 @@ export default function AccountView() {
               </div>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button href="/contact" variant="light">Start a business inquiry</Button>
+              <Button href="/inquiry" variant="light">Start a business inquiry</Button>
               <button onClick={handleLogout} className="rounded-md border border-white/35 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10">
                 Log out
               </button>
@@ -182,7 +182,7 @@ export default function AccountView() {
                 <h2 className="text-lg font-bold text-navy-800">Your business inquiries</h2>
                 <p className="mt-1 text-sm text-slate-500">A history of your conversations with our team.</p>
               </div>
-              <Link href="/contact" className="hidden shrink-0 items-center gap-2 text-sm font-semibold text-maroon-700 hover:text-maroon-800 sm:inline-flex">
+              <Link href="/inquiry" className="hidden shrink-0 items-center gap-2 text-sm font-semibold text-maroon-700 hover:text-maroon-800 sm:inline-flex">
                 New inquiry <Icon name="arrow" className="h-4 w-4" />
               </Link>
             </div>
@@ -220,7 +220,7 @@ export default function AccountView() {
                 <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-500">
                   Ask us about import and export, products, logistics, or partnerships. Requests submitted while signed in, or sent from your account email, appear here.
                 </p>
-                <Button href="/contact" className="mt-5">Talk to our team</Button>
+                <Button href="/inquiry" className="mt-5">Talk to our team</Button>
               </div>
             ) : null}
           </section>
@@ -267,7 +267,7 @@ export default function AccountView() {
               <p className="mt-2 text-sm leading-relaxed text-white/75">
                 Tell us what you are looking to source, ship, or build. Our team can help you discuss the right path for your business.
               </p>
-              <Link href="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-white/80">
+              <Link href="/inquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-white/80">
                 Contact our team <Icon name="arrow" className="h-4 w-4" />
               </Link>
             </section>

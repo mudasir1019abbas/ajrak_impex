@@ -5,6 +5,7 @@ import { Button, PageHero } from "@/components/UI";
 
 const models = {
   "trade-with-us": {
+    engagement: "import-support",
     title: "Trade With Us",
     summary: "Get practical support to bring products into your market, from early sourcing questions through shipping and customs coordination.",
     overview:
@@ -19,6 +20,7 @@ const models = {
     investment: false,
   },
   "back-a-product": {
+    engagement: "product-profit-sharing",
     title: "Back a Product",
     summary: "Explore a product-specific participation arrangement with terms agreed in writing before any funds are committed.",
     overview:
@@ -33,6 +35,7 @@ const models = {
     investment: true,
   },
   "grow-with-us": {
+    engagement: "investor-shareholder",
     title: "Grow With Us",
     summary: "Start a conversation about a potential investor or shareholder relationship and the terms that would govern it.",
     overview:
@@ -109,7 +112,7 @@ export default async function BusinessModelPage({ params }) {
           </aside>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="/contact">Discuss this model <Arrow className="h-4 w-4" /></Button>
+            <Button href={`/inquiry?engagement=${details.engagement}`}>Discuss this model <Arrow className="h-4 w-4" /></Button>
             <Link href="/#layers-to-work" className="font-semibold text-maroon-700 hover:underline">
               Compare all three models
             </Link>

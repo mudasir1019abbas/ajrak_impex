@@ -1,7 +1,8 @@
 import { connection } from "next/server";
+import { connectDB } from "@/lib/db";
 import { json, serverError } from "@/lib/http";
 import { requireAdminApi } from "@/lib/adminApi";
-import { getAdminInquiryStats } from "@/models/ContactMessage";
+import { getAdminInquiryStats } from "@/models/InquiryMessage";
 import { getUserCount } from "@/models/User";
 
 export async function GET() {
@@ -9,6 +10,7 @@ export async function GET() {
   try {
     const denied = await requireAdminApi();
     if (denied) return denied;
+    await connectDB();
 
     const [users, inquiries] = await Promise.all([
       getUserCount(),

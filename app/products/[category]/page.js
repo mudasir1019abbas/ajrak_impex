@@ -35,7 +35,7 @@ export default async function ProductCategoryPage({ params }) {
 
   if (!category) notFound();
 
-  const inquiryHref = `/contact?category=${encodeURIComponent(category.title)}`;
+  const inquiryHref = `/inquiry?category=${encodeURIComponent(category.title)}`;
 
   return (
     <>
