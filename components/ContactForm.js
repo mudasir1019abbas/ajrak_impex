@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { Button, Field } from "@/components/UI";
@@ -19,6 +19,7 @@ const INQUIRY_CATEGORIES = [
   "Home Décor",
   "Kitchen Accessories",
   "Jewelry",
+  "Industrial Chemicals",
   "Sodium Dithionite (Rangkat)",
   "Other",
 ];
@@ -52,6 +53,13 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
   const nameValue = nameEdited ? values.name : values.name || user?.name || "";
+
+  useEffect(() => {
+    const category = new URLSearchParams(window.location.search).get("category");
+    if (category && INQUIRY_CATEGORIES.includes(category)) {
+      setValues((current) => ({ ...current, category }));
+    }
+  }, []);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -104,6 +112,10 @@ export default function ContactForm() {
   }
 
   if (!isAuthenticated) {
+    const returnTo = values.category
+      ? `/contact?category=${encodeURIComponent(values.category)}`
+      : "/contact";
+
     return (
       <Reveal direction="left">
         <div className="rounded-xl bg-white p-6 text-center shadow-lg ring-1 ring-slate-100 sm:p-8">
@@ -113,7 +125,7 @@ export default function ContactForm() {
             Please log in or create an account to submit a product inquiry.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href={`/login?from=${encodeURIComponent("/contact")}`}>Log in</Button>
+            <Button href={`/login?from=${encodeURIComponent(returnTo)}`}>Log in</Button>
             <Link
               href="/signup"
               className="inline-flex items-center justify-center rounded-md border border-maroon-700 px-5 py-2.5 text-sm font-semibold text-maroon-700 transition hover:bg-maroon-50"

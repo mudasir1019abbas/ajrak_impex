@@ -2,8 +2,12 @@ const image = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=c
 
 const productCategories = [
   {
+    slug: "machinery",
     title: "Machinery",
-    description: "Industrial and commercial equipment.",
+    description: "Industrial machinery and production equipment.",
+    overview: "Source production machinery and commercial equipment matched to your operating requirements, production capacity, and destination market.",
+    corridor: "For Pakistan-bound requirements, supplier options from China can be reviewed alongside regional trade routes. Freight planning, import documentation, and customs-clearance coordination are arranged through Karachi, subject to equipment specifications and route.",
+    buyerFit: ["Factories and manufacturers", "Workshops and production units", "Industrial distributors"],
     products: [
       { title: "Industrial Equipment", image: image("1581091226825-a6a2a5aee158"), alt: "Industrial equipment and technical work" },
       { title: "Workshop Machinery", image: image("1567789884554-0b844b597180"), alt: "Machinery in an industrial workspace" },
@@ -11,8 +15,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "electronic-items",
     title: "Electronic Items",
-    description: "Consumer and trade electronics.",
+    description: "Commercial electronics and business devices.",
+    overview: "Compare consumer and commercial electronics for retail, business procurement, or wholesale distribution.",
+    corridor: "China-to-Pakistan sourcing is available to discuss, with regional options from the Middle East where suitable. Freight, import documentation, and customs-clearance coordination are handled through Karachi according to the product and route.",
+    buyerFit: ["Electronics wholesalers", "Retailers", "Corporate procurement teams", "E-commerce sellers"],
     products: [
       { title: "Consumer Electronics", image: image("1498049794561-7780e7231661"), alt: "Modern electronic consumer devices" },
       { title: "Trade Electronics", image: image("1516321318423-f06f85e504b3"), alt: "Electronic equipment for business use" },
@@ -20,17 +28,25 @@ const productCategories = [
     ],
   },
   {
+    slug: "gaming-gadgets",
     title: "Gaming Gadgets",
-    description: "Controllers, consoles, and accessories.",
+    description: "Consoles, controllers and gaming accessories.",
+    overview: "Explore gaming hardware and accessories for specialist retail, wholesale, and online channels.",
+    corridor: "We can discuss sourcing from China for Pakistan and regional markets, including the Middle East. Freight planning, product documentation, and customs-clearance coordination are arranged through Karachi based on the shipment.",
+    buyerFit: ["Gaming wholesalers", "Specialist retailers", "E-commerce sellers", "Entertainment venues"],
     products: [
-      { title: "Gaming Controllers", image: image("1592840496694-26d035b9a193"), alt: "Gaming controller" },
+      { title: "Gaming Controllers", image: image("1593305841991-05c297ba4575"), alt: "Gaming controller and accessories" },
       { title: "Gaming Console", image: image("1606144042614-b2417e99c4e3"), alt: "Modern gaming console" },
       { title: "Gaming Accessories", image: image("1542751371-adc38448a05e"), alt: "Gaming accessories and equipment" },
     ],
   },
   {
+    slug: "other-gadgets",
     title: "Other Gadgets",
-    description: "Smart and everyday devices.",
+    description: "Smart home & daily tech.",
+    overview: "Find practical smart-home and everyday technology products suited to retail and online assortment planning.",
+    corridor: "Supplier options can be discussed across China, Pakistan, and the Middle East. Freight, import documentation, and customs-clearance coordination are arranged through Karachi for the selected item and destination.",
+    buyerFit: ["Gadget distributors", "Retailers", "E-commerce sellers", "Business buyers"],
     products: [
       { title: "Smart Device", image: image("1518444065439-e933c06ce9cd"), alt: "Smart everyday device" },
       { title: "Portable Gadget", image: image("1556656793-08538906a9f8"), alt: "Portable consumer gadget" },
@@ -38,17 +54,25 @@ const productCategories = [
     ],
   },
   {
+    slug: "mobile-accessories",
     title: "Mobile Accessories",
-    description: "Chargers, cables, cases, and audio products.",
+    description: "Charging, protection & mobile audio.",
+    overview: "Build a mobile accessory range around charging, device protection, connectivity, and audio needs.",
+    corridor: "China-to-Pakistan sourcing can be reviewed for selected accessory lines, with regional trade options where appropriate. Freight, import documentation, and customs-clearance coordination are arranged through Karachi for the agreed shipment.",
+    buyerFit: ["Mobile wholesalers", "Accessory retailers", "Repair shops", "E-commerce sellers"],
     products: [
-      { title: "Phone Charger", image: image("1609592424824-7e8b7b1a0f8e"), alt: "Mobile phone charger" },
+      { title: "Phone Charger", image: image("1511707171634-5f897ff02aa9"), alt: "Smartphone and mobile accessories" },
       { title: "Phone Case", image: image("1603891128711-11b4b03bb138"), alt: "Protective mobile phone case" },
       { title: "Mobile Audio", image: image("1505740420928-5e560c06d30e"), alt: "Headphones and mobile audio products" },
     ],
   },
   {
+    slug: "toys",
     title: "Toys",
-    description: "Retail and wholesale toys.",
+    description: "Wholesale toys and children's products.",
+    overview: "Review toy and play-product options for retail ranges, wholesale orders, and online stores.",
+    corridor: "China-to-Pakistan sourcing can be discussed, with regional Middle East routes considered where relevant. Freight, product documentation, and customs-clearance coordination are arranged through Karachi according to the selected goods and destination.",
+    buyerFit: ["Toy wholesalers", "Retailers", "E-commerce sellers", "Education suppliers"],
     products: [
       { title: "Wholesale Toy Set", image: image("1558060370-d644479cb6f7"), alt: "Colourful toys arranged for retail" },
       { title: "Toy Vehicle", image: image("1560961911-ba7ef651a56c"), alt: "Toy vehicle" },
@@ -56,8 +80,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "sleeping-and-traveling-items",
     title: "Sleeping and Traveling Items",
-    description: "Pillows, bags, and travel essentials.",
+    description: "Travel comfort, bags & everyday essentials.",
+    overview: "Source practical travel and comfort products for luggage, travel retail, and general merchandise ranges.",
+    corridor: "We can review supply options from China to Pakistan and regional Middle East markets. Freight, import documentation, and customs-clearance coordination are arranged through Karachi based on shipment size and destination.",
+    buyerFit: ["Travel-goods wholesalers", "Luggage retailers", "E-commerce sellers", "Hospitality buyers"],
     products: [
       { title: "Travel Pillow", image: image("1584100936595-c0654b55a2e2"), alt: "Comfort pillow for travel" },
       { title: "Travel Bag", image: image("1553062407-98eeb64c6a62"), alt: "Bag and luggage for travel" },
@@ -65,8 +93,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "shoes",
     title: "Shoes",
-    description: "Casual, sports, and formal footwear.",
+    description: "Casual, sports & formal footwear.",
+    overview: "Explore footwear options for retail assortments, wholesale distribution, and private business requirements.",
+    corridor: "China, Pakistan, and Middle East sourcing routes can be discussed according to product and market. Freight planning, import documentation, and customs-clearance coordination are arranged through Karachi for the selected shipment.",
+    buyerFit: ["Footwear wholesalers", "Retailers", "Brands and importers", "E-commerce sellers"],
     products: [
       { title: "Casual Footwear", image: image("1542291026-7eec264c27ff"), alt: "Casual sports shoe" },
       { title: "Sports Shoes", image: image("1460353581641-37baddab0fa2"), alt: "Sports footwear" },
@@ -74,8 +106,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "home-decor",
     title: "Home Décor",
-    description: "Decorative and furnishing pieces.",
+    description: "Home furnishing & decor.",
+    overview: "Build home and interior ranges with decorative and furnishing products selected for your customer and price point.",
+    corridor: "Supplier options from China and regional trade partners can be reviewed for Pakistan and the Middle East. Freight, import documentation, and customs-clearance coordination are arranged through Karachi according to item and destination.",
+    buyerFit: ["Homeware wholesalers", "Retailers", "Interior businesses", "E-commerce sellers"],
     products: [
       { title: "Decorative Home Accent", image: image("1618221195710-dd6b41faaea6"), alt: "Decorative accents in a home interior" },
       { title: "Interior Decor", image: image("1616486338812-3dadae4b4ace"), alt: "Styled interior with decorative details" },
@@ -83,8 +119,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "kitchen-accessories",
     title: "Kitchen Accessories",
-    description: "Tools, storage, and cookware.",
+    description: "Cookware, storage & kitchen tools.",
+    overview: "Source kitchen tools, storage, and cookware for household retail, hospitality, and food-service needs.",
+    corridor: "China-to-Pakistan sourcing and suitable regional routes can be discussed. Freight planning, import documentation, and customs-clearance coordination are arranged through Karachi based on product requirements and destination.",
+    buyerFit: ["Kitchenware wholesalers", "Retailers", "Hospitality buyers", "E-commerce sellers"],
     products: [
       { title: "Kitchen Tools", image: image("1556911220-bff31c812dba"), alt: "Tools and cookware in a kitchen" },
       { title: "Food Storage", image: image("1584269600519-112d071b35e6"), alt: "Kitchen storage containers" },
@@ -92,8 +132,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "jewelry",
     title: "Jewelry",
-    description: "Fashion and trade jewelry.",
+    description: "Fashion jewelry & trade accessories.",
+    overview: "Review fashion jewelry and related accessories for boutiques, retail assortments, and wholesale supply.",
+    corridor: "Trade routes involving Pakistan, China, and the Middle East can be assessed for the selected goods. Freight, required documentation, and customs-clearance coordination are arranged through Karachi, subject to product and destination rules.",
+    buyerFit: ["Jewelry wholesalers", "Boutiques and retailers", "E-commerce sellers", "Fashion businesses"],
     products: [
       { title: "Fashion Jewelry", image: image("1515562141207-7a88fb7ce338"), alt: "Fashion jewelry collection" },
       { title: "Trade Jewelry", image: image("1599643478518-a784e5dc4c8f"), alt: "Jewelry suitable for trade" },
@@ -101,8 +145,12 @@ const productCategories = [
     ],
   },
   {
+    slug: "industrial-chemicals",
     title: "Industrial Chemicals",
-    description: "Industrial chemicals and textile processing inputs.",
+    description: "Textile processing & industrial chemicals.",
+    overview: "Discuss industrial chemical and textile-processing inputs against your application, specification, packaging, and safety requirements.",
+    corridor: "Supply options for Pakistan and regional markets can be discussed with origin and route confirmed for each product. Freight, safety and import documentation, and customs-clearance coordination are arranged through Karachi, subject to applicable requirements.",
+    buyerFit: ["Textile factories", "Printers and processors", "Chemical distributors", "Industrial buyers"],
     products: [
       { title: "Sodium Dithionite (Rangkat)", image: image("1582719508461-905c673771fd"), alt: "Industrial chemical processing" },
       { title: "Textile Processing Chemicals", image: image("1532187863486-abf9dbad1b69"), alt: "Chemicals for industrial processing" },

@@ -9,7 +9,6 @@ export default function ImageBox({
   src,
   alt,
   className = "",
-  label,
   sizes = "(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw",
   priority = false,
   fill = false,
@@ -20,10 +19,8 @@ export default function ImageBox({
       <div
         role="img"
         aria-label={alt}
-        className={`ajrak-pattern flex items-center justify-center bg-maroon-50 text-center text-xs font-medium text-maroon-700/70 ${className}`}
-      >
-        {label || alt}
-      </div>
+        className={`ajrak-pattern flex items-center justify-center bg-maroon-50 ${className}`}
+      />
     );
   }
   return (

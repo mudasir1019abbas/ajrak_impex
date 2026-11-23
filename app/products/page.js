@@ -54,7 +54,7 @@ export default function Services() {
               <li className="rounded-lg bg-white/10 px-4 py-3">Bulk packing and supply planning</li>
               <li className="rounded-lg bg-white/10 px-4 py-3">Import documentation arranged by Ajrak Impex</li>
             </ul>
-            <Button href="/contact" className="mt-7">Request Pricing &amp; Specifications <Arrow className="h-4 w-4" /></Button>
+            <Button href="/contact?category=Industrial%20Chemicals" className="mt-7">Request Pricing &amp; Specifications <Arrow className="h-4 w-4" /></Button>
           </Reveal>
           <Reveal direction="right" className="rounded-xl border border-white/15 bg-white/10 p-6 sm:p-8">
             <p className="text-sm font-bold uppercase tracking-wider text-white/60">Industrial Chemical Supply</p>

@@ -47,18 +47,18 @@ const nav = [
     label: "Products",
     to: "/products",
     children: [
-      { label: "Machinery", to: "/products#machinery" },
-      { label: "Electronic Items", to: "/products#electronic-items" },
-      { label: "Gaming Gadgets", to: "/products#gaming-gadgets" },
-      { label: "Other Gadgets", to: "/products#other-gadgets" },
-      { label: "Mobile Accessories", to: "/products#mobile-accessories" },
-      { label: "Toys", to: "/products#toys" },
-      { label: "Sleeping and Traveling Items", to: "/products#sleeping-and-traveling-items" },
-      { label: "Shoes", to: "/products#shoes" },
-      { label: "Home Décor", to: "/products#home-decor" },
-      { label: "Kitchen Accessories", to: "/products#kitchen-accessories" },
-      { label: "Jewelry", to: "/products#jewelry" },
-      { label: "Industrial Chemicals", to: "/products#industrial-chemicals" },
+      { label: "Machinery", to: "/products/machinery" },
+      { label: "Electronic Items", to: "/products/electronic-items" },
+      { label: "Gaming Gadgets", to: "/products/gaming-gadgets" },
+      { label: "Other Gadgets", to: "/products/other-gadgets" },
+      { label: "Mobile Accessories", to: "/products/mobile-accessories" },
+      { label: "Toys", to: "/products/toys" },
+      { label: "Sleeping and Traveling Items", to: "/products/sleeping-and-traveling-items" },
+      { label: "Shoes", to: "/products/shoes" },
+      { label: "Home Décor", to: "/products/home-decor" },
+      { label: "Kitchen Accessories", to: "/products/kitchen-accessories" },
+      { label: "Jewelry", to: "/products/jewelry" },
+      { label: "Industrial Chemicals", to: "/products/industrial-chemicals" },
     ],
   },
   { label: "How We Work", to: "/how-we-work" },
@@ -119,18 +119,41 @@ export default function Navbar() {
                   onMouseEnter={() => setOpenDropdown(item.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button
-                    type="button"
-                    className={`relative flex items-center gap-1 py-1 text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-maroon-700 after:transition-all after:duration-300 hover:text-maroon-700 ${isDropdownActive
-                        ? "text-maroon-700 after:w-full"
-                        : "text-slate-700 after:w-0 hover:after:w-full"
-                      }`}
-                    aria-expanded={isDropdownOpen}
-                    onClick={() => setOpenDropdown(isDropdownOpen ? null : item.label)}
-                  >
-                    {item.label}
-                    <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
-                  </button>
+                  {item.to === "/products" ? (
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={item.to}
+                        aria-current={isDropdownActive ? "page" : undefined}
+                        className={linkClass(isDropdownActive)}
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        aria-label={`${isDropdownOpen ? "Hide" : "Show"} ${item.label} submenu`}
+                        aria-expanded={isDropdownOpen}
+                        onClick={() => setOpenDropdown(isDropdownOpen ? null : item.label)}
+                        className={`rounded-md p-1 transition-colors hover:bg-slate-100 ${
+                          isDropdownActive ? "text-maroon-700" : "text-slate-700"
+                        }`}
+                      >
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`relative flex items-center gap-1 py-1 text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-maroon-700 after:transition-all after:duration-300 hover:text-maroon-700 ${isDropdownActive
+                          ? "text-maroon-700 after:w-full"
+                          : "text-slate-700 after:w-0 hover:after:w-full"
+                        }`}
+                      aria-expanded={isDropdownOpen}
+                      onClick={() => setOpenDropdown(isDropdownOpen ? null : item.label)}
+                    >
+                      {item.label}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+                  )}
                   <div
                     className={`absolute left-1/2 top-full w-max min-w-[14rem] -translate-x-1/2 pt-3 transition-all duration-300 ${isDropdownOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
                       }`}

@@ -12,10 +12,12 @@ export default function ProductCatalog({ categories }) {
   const products = categories
     .filter((category) => activeCategory === "All" || category.title === activeCategory)
     .flatMap((category) =>
-      category.products.map((product) => ({ ...product, category: category.title }))
+      category.products.map((product) => ({
+        ...product,
+        category: category.title,
+        categorySlug: category.slug,
+      }))
     );
-  const categorySlug = (title) =>
-    title.toLowerCase().replaceAll("&", "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   return (
     <>
@@ -54,9 +56,10 @@ export default function ProductCatalog({ categories }) {
       <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" aria-live="polite">
         {products.map((product, index) => (
           <Reveal key={`${product.category}-${product.title}`} delay={(index % 5) * 50} direction="zoom">
-            <article
-              id={categorySlug(product.category)}
-              className="group h-full overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            <Link
+              href={`/products/${product.categorySlug}`}
+              aria-label={`View ${product.category} category: ${product.title}`}
+              className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                 <ImageBox
@@ -70,16 +73,13 @@ export default function ProductCatalog({ categories }) {
                   {product.category}
                 </span>
               </div>
-              <div className="p-3.5">
+              <div className="flex flex-1 flex-col p-3.5">
                 <h3 className="line-clamp-2 min-h-10 text-sm font-bold leading-5 text-navy-800">{product.title}</h3>
-                <Link
-                  href="/contact"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-maroon-700 transition hover:text-maroon-800"
-                >
-                  Enquire <Arrow className="h-3 w-3" />
-                </Link>
+                <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-maroon-700 transition group-hover:text-maroon-800">
+                  View category details <Arrow className="h-3 w-3" />
+                </span>
               </div>
-            </article>
+            </Link>
           </Reveal>
         ))}
       </div>

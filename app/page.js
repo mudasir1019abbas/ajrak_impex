@@ -255,23 +255,28 @@ export default function Home() {
             {productCategories.map((product, index) => (
               <Reveal key={product.title} delay={index * 80} direction="zoom">
                 <Link
-                  href="/products"
-                  className="group block overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-1 hover:shadow-lg"
+                  href={`/products/${product.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <ImageBox
                       src={product.image}
                       alt={product.alt}
                       fill
-                      className="h-full w-full transition duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="px-3 py-3 text-left font-bold text-navy-800 group-hover:text-maroon-700">
-                    {product.title}
-                  </h3>
-                  <p className="px-4 pb-4 text-left text-sm leading-5 text-slate-600">
-                    {product.description}
-                  </p>
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="min-h-10 text-left font-bold leading-5 text-navy-800 group-hover:text-maroon-700">
+                      {product.title}
+                    </h3>
+                    <p className="mt-1 flex-1 text-left text-sm leading-5 text-slate-600">
+                      {product.description}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-maroon-700">
+                      Explore category <Arrow className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}
