@@ -25,12 +25,12 @@ const nav = [
     label: "About Us",
     to: "/about",
     children: [
-      { label: "Company Overview", to: "/about" },
+      { label: "Company Overview", to: "/about#company-overview" },
       { label: "Mission & Vision", to: "/about#mission-vision" },
       { label: "Partner Network", to: "/about#partner-network" },
+      { label: "Legal Info", to: "/legal#company-information" },
+      { label: "Legal FAQs", to: "/legal/faqs" },
       { label: "Our Team", to: "/team" },
-      { label: "Core Team", to: "/team#core-team" },
-      { label: "Legal Team", to: "/legal#company-information" },
     ],
   },
   {

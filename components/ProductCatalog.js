@@ -15,6 +15,7 @@ export default function ProductCatalog({ categories }) {
       category.products.map((product) => ({
         ...product,
         category: category.title,
+        categoryDescription: category.description,
         categorySlug: category.slug,
       }))
     );
@@ -22,30 +23,28 @@ export default function ProductCatalog({ categories }) {
   return (
     <>
       <div
-        className="mb-8 min-w-0 overflow-x-auto overscroll-x-contain scrollbar-hide scroll-smooth px-1 py-2"
+        className="mb-8 flex min-w-0 flex-wrap justify-center gap-2 px-1 py-2"
         role="group"
         aria-label="Filter products by category"
       >
-        <div className="flex w-max min-w-full snap-x snap-proximity flex-nowrap justify-center gap-2">
-          {categoryNames.map((category) => {
-            const selected = category === activeCategory;
-            return (
-              <button
-                key={category}
-                type="button"
-                aria-pressed={selected}
-                onClick={() => setActiveCategory(category)}
-                className={`shrink-0 snap-start rounded-full border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2 ${
-                  selected
-                    ? "border-maroon-700 bg-maroon-700 text-white shadow-sm"
-                    : "border-slate-200 bg-white text-navy-800 hover:border-maroon-700 hover:text-maroon-700"
-                }`}
-              >
-                {category}
-              </button>
-            );
-          })}
-        </div>
+        {categoryNames.map((category) => {
+          const selected = category === activeCategory;
+          return (
+            <button
+              key={category}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => setActiveCategory(category)}
+              className={`min-w-0 max-w-full rounded-full border px-4 py-2 text-center text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2 ${
+                selected
+                  ? "border-maroon-700 bg-maroon-700 text-white shadow-sm"
+                  : "border-slate-200 bg-white text-navy-800 hover:border-maroon-700 hover:text-maroon-700"
+              }`}
+            >
+              {category}
+            </button>
+          );
+        })}
       </div>
 
       <p className="mb-5 text-center text-sm text-slate-500" aria-live="polite">
@@ -53,13 +52,13 @@ export default function ProductCatalog({ categories }) {
         {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
       </p>
 
-      <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" aria-live="polite">
+      <div className="grid min-w-0 grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" aria-live="polite">
         {products.map((product, index) => (
-          <Reveal key={`${product.category}-${product.title}`} delay={(index % 5) * 50} direction="zoom">
+          <Reveal key={`${product.category}-${product.title}`} delay={(index % 5) * 50} direction="zoom" className="min-w-0">
             <Link
               href={`/products/${product.categorySlug}`}
               aria-label={`View ${product.category} category: ${product.title}`}
-              className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex h-full min-w-0 flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                 <ImageBox
@@ -75,6 +74,9 @@ export default function ProductCatalog({ categories }) {
               </div>
               <div className="flex flex-1 flex-col p-3.5">
                 <h3 className="line-clamp-2 min-h-10 text-sm font-bold leading-5 text-navy-800">{product.title}</h3>
+                <p className="mt-1 line-clamp-2 min-h-10 text-xs leading-5 text-slate-600">
+                  {product.categoryDescription}
+                </p>
                 <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-maroon-700 transition group-hover:text-maroon-800">
                   View category details <Arrow className="h-3 w-3" />
                 </span>

@@ -17,14 +17,14 @@ const support = [
 
 export default function Services() {
   return (
-    <>
+    <div className="w-full min-w-0 overflow-x-clip">
       <PageHero
         title="Our Products"
         text="Explore our product range by category. Choose a category to see the products available for sourcing."
       />
 
-      <section className="bg-white py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="w-full min-w-0 overflow-x-clip bg-white py-14">
+        <div className="mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Find what you need"
             title="Explore Our Categories"
@@ -88,6 +88,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

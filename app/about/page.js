@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { Button, PageHero, SectionTitle } from "@/components/UI";
 import { Arrow, Award, Globe, ShieldCheck, Truck } from "@/components/Icons";
@@ -38,9 +39,15 @@ export default function About() {
         </div>
       </section>
 
-      <section id="mission-vision" className="bg-white py-14">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
+      <section id="company-overview" className="scroll-mt-24 bg-white py-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 md:grid-cols-[1.1fr_0.9fr] lg:px-8">
+          <Reveal className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-maroon-700">
+              Company overview
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold text-navy-800 sm:text-3xl">
+              Making global trade more accessible
+            </h2>
             <p className="text-lg leading-8 text-slate-700">
               We believe great products shouldn&apos;t be a privilege. At Ajrak Impex, we bring the world&apos;s freshest trends—fashion,
               accessories, gadgets, sports gear, snacks and more—to Pakistan at prices that make sense.
@@ -50,22 +57,45 @@ export default function About() {
               So we built a company that does the heavy lifting with you, not just for you.
             </p>
           </Reveal>
+          <Reveal direction="right" className="min-w-0">
+            <Image
+              src="/images/shipping-containers.jpg"
+              alt="Illustration of shipping containers representing Ajrak Impex's import and export work"
+              width={640}
+              height={480}
+              sizes="(min-width: 768px) 42vw, 100vw"
+              className="h-auto w-full rounded-xl ring-1 ring-slate-200"
+            />
+          </Reveal>
         </div>
       </section>
 
       <section id="partner-network" className="bg-white py-14">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <SectionTitle
-              eyebrow="How we work"
-              title="Professional Partner Network"
-              subtitle="Ajrak Impex International facilitates business services through a professional network of relevant service providers."
-              align="left"
-            />
-            <p className="leading-7 text-slate-600">
-              We organise the initial inquiry, clarify the customer&apos;s requirements and coordinate the appropriate next step with relevant professionals.
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 md:grid-cols-[1.05fr_0.95fr] lg:px-8">
+          <Reveal className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-maroon-700">
+              How we work
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold text-navy-800 sm:text-3xl">
+              Professional Partner Network
+            </h2>
+            <span className="mt-3 block h-1 w-14 rounded bg-maroon-700" />
+            <p className="mt-4 leading-7 text-slate-600">
+              Ajrak Impex International facilitates business services through a professional network of relevant service providers. We organise the initial inquiry, clarify the customer&apos;s requirements, and coordinate the appropriate next step.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-500">
               Specific partners and qualifications are assessed for each requirement. The platform does not represent partnerships or credentials that have not been separately confirmed.
             </p>
+          </Reveal>
+          <Reveal direction="right" className="min-w-0">
+            <Image
+              src="/images/partner-network.jpg"
+              alt="Illustration of a business coordinating with a network of independent service providers"
+              width={640}
+              height={480}
+              sizes="(min-width: 768px) 42vw, 100vw"
+              className="h-auto w-full rounded-xl ring-1 ring-slate-200"
+            />
           </Reveal>
         </div>
       </section>
@@ -103,20 +133,30 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-white py-14">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
-          <Reveal>
+      <section id="mission-vision" className="scroll-mt-24 bg-white py-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr] lg:px-8">
+          <Reveal className="min-w-0">
             <h2 className="text-2xl font-extrabold text-navy-800">Our Mission</h2>
             <p className="mt-3 leading-7 text-slate-600">
               To open the doors of global trade to young professionals by making sourcing, importing, and investing simple,
               affordable, and transparent, so that anyone with drive can begin, whatever their experience.
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal className="min-w-0">
             <h2 className="text-2xl font-extrabold text-navy-800">Our Vision</h2>
             <p className="mt-3 leading-7 text-slate-600">
               To become Pakistan&apos;s most trusted launchpad for young traders and investors, connecting local ambition with global opportunity.
             </p>
+          </Reveal>
+          <Reveal direction="right" className="min-w-0">
+            <Image
+              src="/images/illustrations/mission-vision.svg"
+              alt="Illustration of a compass and forward route representing the company's mission and vision"
+              width={640}
+              height={480}
+              sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+              className="h-auto w-full rounded-xl ring-1 ring-slate-200"
+            />
           </Reveal>
         </div>
       </section>

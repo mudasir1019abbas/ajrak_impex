@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/UI";
 
@@ -79,13 +80,25 @@ export default function Legal() {
       <div className="bg-white">
         <div className="mx-auto max-w-4xl space-y-14 px-4 py-12 sm:px-6 sm:py-16">
           <section id="company-information" className="scroll-mt-24">
-            <h2 className="text-2xl font-extrabold text-navy-800">
-              Company & Compliance Information
-            </h2>
-            <p className="mt-2 leading-7 text-slate-600">
-              Published company details are listed below. Contact us for
-              current documents or information that is not published here.
-            </p>
+            <div className="grid min-w-0 items-center gap-6 md:grid-cols-[minmax(0,1fr)_15rem]">
+              <div className="min-w-0">
+                <h2 className="text-2xl font-extrabold text-navy-800">
+                  Company & Compliance Information
+                </h2>
+                <p className="mt-2 leading-7 text-slate-600">
+                  Published company details are listed below. Contact us for
+                  current documents or information that is not published here.
+                </p>
+              </div>
+              <Image
+                src="/images/illustrations/compliance-records.svg"
+                alt="Illustration of company records with a compliance check mark"
+                width={640}
+                height={480}
+                sizes="(min-width: 768px) 15rem, 100vw"
+                className="h-auto w-full rounded-xl ring-1 ring-slate-200"
+              />
+            </div>
             <dl className="mt-6 grid gap-4 sm:grid-cols-2">
               {companyInformation.map(([label, value]) => (
                 <div
@@ -130,8 +143,20 @@ export default function Legal() {
           </section>
 
           <section id="privacy" className="scroll-mt-24 border-t border-slate-100 pt-10">
-            <h2 className="text-2xl font-extrabold text-navy-800">Privacy Policy</h2>
-            <PolicySections sections={privacy} />
+            <div className="grid min-w-0 items-start gap-6 md:grid-cols-[minmax(0,1fr)_13rem]">
+              <div className="min-w-0">
+                <h2 className="text-2xl font-extrabold text-navy-800">Privacy Policy</h2>
+                <PolicySections sections={privacy} />
+              </div>
+              <Image
+                src="/images/illustrations/privacy-shield.svg"
+                alt="Illustration of a shield and lock representing privacy protection"
+                width={320}
+                height={320}
+                sizes="(min-width: 768px) 13rem, 100vw"
+                className="mx-auto h-auto w-full max-w-[13rem] rounded-xl ring-1 ring-slate-200"
+              />
+            </div>
           </section>
 
           <section id="risk" className="scroll-mt-24 border-t border-amber-200 bg-amber-50 p-6 sm:p-8">
