@@ -30,6 +30,7 @@ export const ShieldCheck = make(<><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2
 export const Award = make(<><circle cx="12" cy="9" r="5" /><path d="M9 13.5L7.5 21l4.5-2.5 4.5 2.5L15 13.5" /></>);
 export const Globe = make(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.8 2.6 2.8 15.4 0 18M12 3c-2.8 2.6-2.8 15.4 0 18" /></>);
 export const Container = make(<><rect x="3" y="6" width="18" height="12" rx="1" /><path d="M7 6v12M11 6v12M15 6v12M19 6v12" /></>);
+export const Briefcase = make(<><rect x="3" y="7" width="18" height="14" rx="2" /><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18M10 12v2h4v-2" /></>);
 export const Plane = make(<path d="M21 4s-2-.5-4 1.5L13 9.5 5 8l-1.5 1.5L9 12l-2.5 3H4l-1 1 3 1 1 3 1-1v-2.5l3-2.5 2.5 5.5L18 19l-1.5-8 4-4C21.5 6 21 4 21 4z" />);
 export const FileCheck = make(<><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z" /><path d="M14 3v5h5M9 14l2 2 4-4" /></>);
 export const Truck = make(<><path d="M2 6h11v10H2zM13 9h4l3 3v4h-7" /><circle cx="6.5" cy="17.5" r="1.8" /><circle cx="16.5" cy="17.5" r="1.8" /></>);
