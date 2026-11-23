@@ -17,8 +17,7 @@ const isGroupActive = (pathname, item) =>
   item.children.some((child) => isActive(pathname, child.to.split("#")[0]));
 
 const linkClass = (isActive) =>
-  `relative py-1 text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-maroon-700 after:transition-all after:duration-300 hover:text-maroon-700 ${
-    isActive ? "text-maroon-700 after:w-full" : "text-slate-700 after:w-0 hover:after:w-full"
+  `relative py-1 text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-maroon-700 after:transition-all after:duration-300 hover:text-maroon-700 ${isActive ? "text-maroon-700 after:w-full" : "text-slate-700 after:w-0 hover:after:w-full"
   }`;
 const nav = [
   { label: "Home", to: "/" },
@@ -29,12 +28,16 @@ const nav = [
       { label: "Company Overview", to: "/about" },
       { label: "Mission & Vision", to: "/about#mission-vision" },
       { label: "Partner Network", to: "/about#partner-network" },
+      { label: "Our Team", to: "/team" },
+      { label: "Core Team", to: "/team#core-team" },
+      { label: "Legal Team", to: "/legal#company-information" },
     ],
   },
   {
     label: "Our Services",
     to: "/services",
     children: [
+      { label: "Global Trade", to: "/global-trade" },
       { label: "Business Registration & Compliance", to: "/services/business-registration" },
       { label: "Business & Foreign Consultancy", to: "/services/business-foreign-consultancy" },
       { label: "Business Development & Innovation", to: "/services/business-development" },
@@ -58,16 +61,7 @@ const nav = [
       { label: "Industrial Chemicals", to: "/products#industrial-chemicals" },
     ],
   },
-  { label: "Global Trade", to: "/global-trade" },
   { label: "How We Work", to: "/how-we-work" },
-  {
-    label: "Our Team",
-    to: "/team",
-    children: [
-      { label: "Core Team", to: "/team#core-team" },
-      { label: "Legal Team", to: "/legal#company-information" },
-    ],
-  },
   {
     label: "Resources",
     to: "/news",
@@ -106,9 +100,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white/95 backdrop-blur transition-shadow duration-300 ${
-        scrolled ? "shadow-md" : "shadow-sm"
-      }`}
+      className={`sticky top-0 z-50 bg-white/95 backdrop-blur transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"
+        }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:px-8 lg:h-20 lg:px-12">
         <Logo />
@@ -128,9 +121,10 @@ export default function Navbar() {
                 >
                   <button
                     type="button"
-                    className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-maroon-700 ${
-                      isDropdownActive ? "text-maroon-700" : "text-slate-700"
-                    }`}
+                    className={`relative flex items-center gap-1 py-1 text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:bg-maroon-700 after:transition-all after:duration-300 hover:text-maroon-700 ${isDropdownActive
+                        ? "text-maroon-700 after:w-full"
+                        : "text-slate-700 after:w-0 hover:after:w-full"
+                      }`}
                     aria-expanded={isDropdownOpen}
                     onClick={() => setOpenDropdown(isDropdownOpen ? null : item.label)}
                   >
@@ -138,18 +132,27 @@ export default function Navbar() {
                     <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
                   </button>
                   <div
-                    className={`absolute left-1/2 top-full w-48 -translate-x-1/2 pt-3 transition-all duration-300 ${
-                      isDropdownOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
-                    }`}
+                    className={`absolute left-1/2 top-full w-max min-w-[14rem] -translate-x-1/2 pt-3 transition-all duration-300 ${isDropdownOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
+                      }`}
                   >
-                    <ul className="overflow-hidden rounded-lg border border-slate-100 bg-white py-1 shadow-xl">
-                      {item.children.map((c) => (
-                        <li key={c.label}>
-                          <Link href={c.to} className="block px-4 py-2 text-sm hover:bg-maroon-50 hover:text-maroon-700">
-                            {c.label}
-                          </Link>
-                        </li>
-                      ))}
+                    <ul className="overflow-hidden rounded-lg border border-slate-100 bg-white py-1.5 shadow-xl">
+                      {item.children.map((c) => {
+                        const isChildActive = isActive(pathname, c.to.split("#")[0]);
+                        return (
+                          <li key={c.label}>
+                            <Link
+                              href={c.to}
+                              aria-current={isChildActive ? "page" : undefined}
+                              className={`block whitespace-nowrap px-4 py-2 text-sm transition-colors ${isChildActive
+                                  ? "bg-maroon-50 font-medium text-maroon-700"
+                                  : "text-slate-700 hover:bg-maroon-50 hover:text-maroon-700"
+                                }`}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
@@ -207,7 +210,18 @@ export default function Navbar() {
           className="rounded-md p-2 text-navy-800 transition hover:bg-slate-100 lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          onClick={() => setOpenOn(open ? null : pathname)}
+          onClick={() => {
+            if (open) {
+              setOpenOn(null);
+              setOpenMobileDropdown(null);
+            } else {
+              setOpenOn(pathname);
+              const activeParent = nav.find(
+                (item) => item.children && isGroupActive(pathname, item)
+              );
+              setOpenMobileDropdown(activeParent ? activeParent.label : null);
+            }
+          }}
         >
           {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -215,9 +229,8 @@ export default function Navbar() {
 
       {/* Mobile / tablet panel */}
       <div
-        className={`grid max-h-[calc(100dvh_-_4rem)] overflow-hidden border-t border-slate-100 bg-white transition-all duration-500 lg:hidden ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] border-transparent opacity-0"
-        }`}
+        className={`grid max-h-[calc(100dvh_-_4rem)] overflow-hidden border-t border-slate-100 bg-white transition-all duration-500 lg:hidden ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] border-transparent opacity-0"
+          }`}
       >
         <div className="min-h-0 overflow-y-auto">
           <nav className="flex flex-col gap-1 px-6 py-4 sm:px-8" aria-label="Mobile">
@@ -226,9 +239,8 @@ export default function Navbar() {
                 ? isGroupActive(pathname, item)
                 : isActive(pathname, item.to);
               const current = isActive(pathname, item.to);
-              const mobileLinkClass = `rounded-md px-3 py-2.5 text-sm font-medium transition-all duration-300 ${
-                open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
-              } ${active ? "bg-maroon-50 text-maroon-700" : "text-slate-700 hover:bg-slate-50"}`;
+              const mobileLinkClass = `rounded-md px-3 py-2.5 text-sm font-medium transition-all duration-300 ${open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                } ${active ? "bg-maroon-50 text-maroon-700" : "text-slate-700 hover:bg-slate-50"}`;
 
               if (!item.children) {
                 return (
@@ -268,41 +280,49 @@ export default function Navbar() {
                       onClick={() =>
                         setOpenMobileDropdown(submenuOpen ? null : item.label)
                       }
-                      className="rounded-md p-3 text-navy-800 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700"
+                      className={`rounded-md p-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 ${active
+                          ? "text-maroon-700 hover:bg-maroon-100/50"
+                          : "text-navy-800 hover:bg-slate-100"
+                        }`}
                     >
                       <ChevronDown
-                        className={`h-5 w-5 transition-transform duration-300 ${
-                          submenuOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-5 w-5 transition-transform duration-300 ${submenuOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                   </div>
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ${
-                      submenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                    }`}
+                    className={`grid transition-[grid-template-rows] duration-300 ${submenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
                   >
                     <ul
                       id={submenuId}
                       aria-label={`${item.label} submenu`}
                       aria-hidden={!submenuOpen}
-                      className="min-h-0 overflow-hidden border-l border-slate-200 ml-3 pl-3"
+                      className="min-h-0 overflow-hidden ml-3.5 pl-3.5 border-l-2 border-slate-200 py-1 space-y-0.5"
                     >
-                      {item.children.map((child) => (
-                        <li key={child.label}>
-                          <Link
-                            href={child.to}
-                            tabIndex={submenuOpen ? 0 : -1}
-                            aria-current={
-                              isActive(pathname, child.to) ? "page" : undefined
-                            }
-                            onClick={() => setOpenOn(null)}
-                            className="block rounded-md px-3 py-2.5 text-sm text-slate-700 transition hover:bg-maroon-50 hover:text-maroon-700"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {item.children.map((child) => {
+                        const isChildActive = isActive(
+                          pathname,
+                          child.to.split("#")[0]
+                        );
+                        return (
+                          <li key={child.label}>
+                            <Link
+                              href={child.to}
+                              tabIndex={submenuOpen ? 0 : -1}
+                              aria-current={isChildActive ? "page" : undefined}
+                              onClick={() => setOpenOn(null)}
+                              className={`block rounded-md px-3 py-2 text-sm transition ${isChildActive
+                                  ? "bg-maroon-50 font-semibold text-maroon-700"
+                                  : "text-slate-600 hover:bg-slate-50 hover:text-maroon-700"
+                                }`}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
@@ -314,13 +334,11 @@ export default function Navbar() {
                 aria-current={isActive(pathname, "/admin") ? "page" : undefined}
                 style={{ transitionDelay: open ? `${nav.length * 40}ms` : "0ms" }}
                 onClick={() => setOpenOn(null)}
-                className={`rounded-md px-3 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                  open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
-                } ${
-                  isActive(pathname, "/admin")
+                className={`rounded-md px-3 py-2.5 text-sm font-semibold transition-all duration-300 ${open ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                  } ${isActive(pathname, "/admin")
                     ? "bg-maroon-50 text-maroon-700"
                     : "text-maroon-700 hover:bg-maroon-50"
-                }`}
+                  }`}
               >
                 Admin dashboard
               </Link>
