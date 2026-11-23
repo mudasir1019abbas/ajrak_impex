@@ -2,7 +2,19 @@ import Link from "next/link";
 import ImageBox from "@/components/ImageBox";
 import Reveal from "@/components/Reveal";
 import { Button, SectionTitle } from "@/components/UI";
-import { Arrow, Award, Globe, ShieldCheck, Truck } from "@/components/Icons";
+import {
+  Arrow,
+  Award,
+  Facebook,
+  Globe,
+  Instagram,
+  LinkedIn,
+  Mail,
+  ShieldCheck,
+  TikTok,
+  Truck,
+  WhatsApp,
+} from "@/components/Icons";
 import ImpactStats from "@/components/ImpactStats";
 import productCategories from "@/data/products";
 import { shippingContainers } from "@/data/images";
@@ -56,14 +68,12 @@ const steps = [
 ];
 
 const branchSocialLinks = [
-  {
-    label: "WhatsApp Channel",
-    href: "https://whatsapp.com/channel/0029Vb9tRqY05MUdmvrAg10L",
-  },
-  { label: "Facebook", href: "https://www.facebook.com/ajrakimpex1" },
-  { label: "Instagram", href: "https://www.instagram.com/ajrakimpex" },
-  { label: "TikTok", href: "https://www.tiktok.com/@ajrakimpex1" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/ajrakimpex" },
+  { label: "Email", icon: Mail, href: "mailto:ajrakimpex@gmail.com" },
+  { label: "WhatsApp Channel", icon: WhatsApp, href: "https://whatsapp.com/channel/0029Vb9tRqY05MUdmvrAg10L" },
+  { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/ajrakimpex1" },
+  { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/ajrakimpex" },
+  { label: "TikTok", icon: TikTok, href: "https://www.tiktok.com/@ajrakimpex1" },
+  { label: "LinkedIn", icon: LinkedIn, href: "https://www.linkedin.com/in/ajrakimpex" },
 ];
 
 export default function Home() {
@@ -196,15 +206,17 @@ export default function Home() {
               Follow our channels for information and updates:
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {branchSocialLinks.map((social) => (
+              {branchSocialLinks.map(({ label, icon: Icon, href }) => (
                 <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-md border border-navy-800/20 bg-white px-4 py-2 text-sm font-semibold text-navy-800 transition hover:border-maroon-700 hover:text-maroon-700"
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={`Ajrak Impex on ${label}`}
+                  title={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy-800/20 bg-white text-navy-800 transition hover:border-maroon-700 hover:bg-maroon-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2"
                 >
-                  {social.label}
+                  <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>

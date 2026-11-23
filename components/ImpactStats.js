@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Award, Globe, MapPin } from "@/components/Icons";
+import { Award, Globe, MapPin, Plane } from "@/components/Icons";
 import { PageHero } from "@/components/UI";
 
 const stats = [
@@ -12,16 +12,22 @@ const stats = [
     icon: MapPin,
   },
   {
-    value: 5,
-    label: "Product categories",
-    detail: "Fashion, accessories, gadgets, sports & snacks",
+    value: 4,
+    label: "Core Services",
+    detail: "Global trade, registration, consultancy & growth",
+    icon: Award,
+  },
+  {
+    value: 12,
+    label: "Product Categories",
+    detail: "Machinery, electronics, consumer goods & chemicals",
     icon: Globe,
   },
   {
     value: 3,
-    label: "Ways to grow",
-    detail: "Trade, product backing & partnership",
-    icon: Award,
+    label: "Trade Corridors",
+    detail: "Pakistan, China & Middle East",
+    icon: Plane,
   },
 ];
 
@@ -85,18 +91,20 @@ export default function ImpactStats() {
           title="Ajrak Impex at a glance"
           text="A clear start to global trade"
         />
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {stats.map(({ value, label, detail, icon: Icon }) => (
             <article
               key={label}
-              className="rounded-xl bg-white/90 px-5 py-6 text-center shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-6"
+              className="flex h-full flex-col items-center rounded-xl bg-white/90 px-3 py-4 text-center shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-4"
             >
-              <Icon className="mx-auto h-7 w-7 text-maroon-700" />
-              <p className="mt-3 text-4xl font-extrabold tracking-tight text-navy-800 sm:text-5xl">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-maroon-50">
+                <Icon className="h-5 w-5 text-maroon-700" />
+              </span>
+              <p className="mt-2 text-3xl font-extrabold tracking-tight text-navy-800 sm:text-4xl">
                 <CountUp value={value} />
               </p>
-              <h3 className="mt-2 font-bold text-navy-800">{label}</h3>
-              <p className="mt-1 text-sm leading-6 text-slate-600">{detail}</p>
+              <h3 className="mt-1 text-sm font-bold text-navy-800">{label}</h3>
+              <p className="mt-1 max-w-[16rem] text-xs leading-5 text-slate-600">{detail}</p>
             </article>
           ))}
         </div>

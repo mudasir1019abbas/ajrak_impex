@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cacheLife } from "next/cache";
 import Logo from "@/components/Logo";
-import { Facebook, Mail } from "@/components/Icons";
+import { Facebook, Instagram, LinkedIn, Mail, TikTok, WhatsApp } from "@/components/Icons";
 
 const sitemap = [
   { label: "Home", to: "/" },
@@ -17,7 +17,11 @@ const sitemap = [
 
 const socialLinks = [
   { label: "Email", icon: Mail, href: "mailto:ajrakimpex@gmail.com" },
-  { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/Ajrakimpex" },
+  { label: "WhatsApp Channel", icon: WhatsApp, href: "https://whatsapp.com/channel/0029Vb9tRqY05MUdmvrAg10L" },
+  { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/ajrakimpex1" },
+  { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/ajrakimpex" },
+  { label: "TikTok", icon: TikTok, href: "https://www.tiktok.com/@ajrakimpex1" },
+  { label: "LinkedIn", icon: LinkedIn, href: "https://www.linkedin.com/in/ajrakimpex" },
 ];
 
 // The year is cached, so the footer stays part of the static shell instead of

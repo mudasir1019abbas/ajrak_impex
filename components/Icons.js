@@ -17,6 +17,15 @@ const make = (paths) =>
     );
   };
 
+const makeBrand = (paths) =>
+  function BrandIcon({ className = "h-8 w-8" }) {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+        {paths}
+      </svg>
+    );
+  };
+
 export const ShieldCheck = make(<><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z" /><path d="M8.5 12l2.5 2.5L16 9.5" /></>);
 export const Award = make(<><circle cx="12" cy="9" r="5" /><path d="M9 13.5L7.5 21l4.5-2.5 4.5 2.5L15 13.5" /></>);
 export const Globe = make(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.8 2.6 2.8 15.4 0 18M12 3c-2.8 2.6-2.8 15.4 0 18" /></>);
@@ -38,3 +47,14 @@ export const Scissors = make(<><circle cx="6" cy="6" r="2.5" /><circle cx="6" cy
 
 // Simple brand glyphs for social links
 export const Facebook = make(<path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" />);
+export const WhatsApp = make(<><path d="M20.5 11.5a8.5 8.5 0 01-12.6 7.4L3 20l1.1-4.7A8.5 8.5 0 1120.5 11.5z" /><path d="M8.2 7.7c.3-.6.6-.6.9-.6h.6c.2 0 .4.1.5.4l.8 1.9c.1.3 0 .5-.2.7l-.7.8c.8 1.5 2 2.7 3.5 3.5l.8-.7c.2-.2.4-.3.7-.2l1.9.8c.3.1.4.3.4.5v.6c0 .3 0 .6-.6.9-.5.3-1.1.5-1.8.3-1.3-.3-3.2-1.2-4.8-2.8-1.6-1.6-2.5-3.5-2.8-4.8-.2-.7 0-1.3.8-1.3z" /></>);
+export const Instagram = make(<><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none" /></>);
+export const TikTok = makeBrand(
+  <path d="M16.8 2.3h-3.6v12.9a2.9 2.9 0 1 1-2.9-2.9c.4 0 .8.1 1.1.2V8.8a7 7 0 1 0 5.4 6.8V9.1a9.1 9.1 0 0 0 5 1.5V6.9a5.3 5.3 0 0 1-5-4.6Z" />,
+);
+export const LinkedIn = makeBrand(
+  <>
+    <circle cx="6.3" cy="6.2" r="2" />
+    <path d="M4.6 9.3H8V20H4.6zM10 9.3h3.3v1.5a4 4 0 0 1 3.5-1.8c3.2 0 3.9 2.1 3.9 4.9V20h-3.4v-5.4c0-1.5 0-3-1.9-3s-2.1 1.5-2.1 2.9V20H10z" />
+  </>,
+);
