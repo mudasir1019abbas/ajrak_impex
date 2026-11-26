@@ -49,8 +49,8 @@ export default function About() {
               Making global trade more accessible
             </h2>
             <p className="text-lg leading-8 text-slate-700">
-              We believe great products shouldn&apos;t be a privilege. At Ajrak Impex, we bring the world&apos;s freshest trends—fashion,
-              accessories, gadgets, sports gear, snacks and more—to Pakistan at prices that make sense.
+              We believe great products shouldn&apos;t be a privilege. At Ajrak Impex, we bring the world&apos;s freshest trends-fashion,
+              accessories, gadgets, sports gear, snacks and more to Pakistan at prices that make sense.
             </p>
             <p className="mt-5 leading-7 text-slate-600">
               We started with a simple idea: young, driven people deserve a real way into global trade, even with zero experience.

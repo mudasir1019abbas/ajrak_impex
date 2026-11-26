@@ -131,7 +131,8 @@ export default function Legal() {
                   +92-300-5310821
                 </a>
                 <br />
-                A-1517, Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi
+                Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi<br/>
+                Beside A-Zee Foods, Mirwah Canal Road,Khairpur Mirs
               </address>
             </div>
           </section>

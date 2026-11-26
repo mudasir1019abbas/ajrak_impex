@@ -74,8 +74,8 @@ export default function Footer() {
 
         <div className="text-sm text-white/75">
           <h3 className="font-bold uppercase tracking-widest text-white/90">Contact</h3>
-          <p className="mt-4"><strong className="text-white">Head Office:</strong> A-1517, Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi</p>
-          <p className="mt-3"><strong className="text-white">Branch Office:</strong> Abid Colony, Mirwah Road, Khairpur</p>
+          <p className="mt-4"><strong className="text-white">Head Office:</strong> Gulshan-e-Hadeed Phase 2, Bin Qasim Town Road, Karachi</p>
+          <p className="mt-3"><strong className="text-white">Branch Office:</strong> Beside A-Zee Foods, Mirwah Canal Road,Khairpur Mirs</p>
           <a href="tel:+923005310821" className="mt-3 block hover:text-white">+92-300-5310821</a>
           <a href="mailto:ajrakimpex@gmail.com" className="mt-1 block hover:text-white">ajrakimpex@gmail.com</a>
         </div>
